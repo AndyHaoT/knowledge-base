@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+}
+
+/* Login page */
+.container {
+    text-align: center;
+}
+
+.login-box {
+    width: 500px;
+    height: 400px;
+    background-color: #f7f6f2;
+    margin: auto;
+    margin-top: 120px;
+    padding: 80px 100px 120px;
+}
+
+.login-box h3 {
+    text-align: left;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2em;
+    color: #c1c1c0;
+    width: 100%;
+    border-bottom: solid white 2px;
+    padding-bottom: 80px;
+    margin-top: 0;
+}
+
+#login-form {
+    width: 100%;
+    background-color: white;
+    border: solid #aaa 2px;
+}
+
+#login-form div {
+    width: 90%;
+    margin: auto;
+}
+
+#username-input-field {
+    border-bottom: solid #ddd 2px;
+}
+
+#login-form input {
+    font-size: 1.5em;
+    width: 75%;
+    margin: auto;
+    background-color: #00000000;
+    border: none;
+    outline: none;
+    padding: 20px 30px 20px 20px;
+    font-style: italic;
+}
+
+#login-form img {
+    float: left;
+    padding-top: 10px;
+    width: 50px;
+}
+
+#login-form input:first-child {
+    border-bottom: solid #ddd 2px;
+}
+
+#login-btn {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #ffc000;
+    color: white;
+    border: none;
+    padding: 20px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+#error-msg {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5em;
+    width: 100%;
+    padding-top: 10px;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    height: 50px;
+    text-align: center;
+    background-color: #dd6666;
+    color: white;
+}

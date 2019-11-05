@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Knowledge Base | Login</title>
+    <meta name="description" content="Knowledge Base | Login">
+    <meta name="author" content="Hao Tang">
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js" defer></script>
+</head>
+
+<body>
+    <% if (error_msg != '') {%>
+    <%- include('partials/error', {msg: error_msg}); %>
+    <% } %>
+    <div class="container">
+        <div class="login-box">
+            <h3>&nbsp;Member Login</h3>
+            <form action="/login" method="POST">
+                <div id="login-form">
+                    <div id="username-input-field">
+                        <img src="/img/user.png">
+                        <input type="text" name="username" placeholder="username" maxlength="20" required
+                            pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
+                            onfocus="HideError()">
+                    </div>
+                    <div id="password-input-field">
+                        <img src="/img/password.png">
+                        <input type="password" name="password" placeholder="password" maxlength="20" required
+                            pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
+                            onfocus="HideError()">
+                    </div>
+
+                </div>
+                <br>
+                <input id="login-btn" type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
