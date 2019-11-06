@@ -1,5 +1,6 @@
 const sessionModel = require('../models/session');
 const userModel = require('../models/user');
+const strVal = require('../values/string');
 
 exports.root_get = function(req, res) {
     sessionModel.createSessionTable()
@@ -18,7 +19,10 @@ exports.root_get = function(req, res) {
 exports.login_get = function(req, res) {
     sessionModel.createSessionTable();
     userModel.createUserTable();
-    res.render('login', { error_msg: '' });
+    res.render('login', {
+        error_msg: '',
+        slogan: strVal.appSlogan
+    });
 }
 
 exports.login_post = function(req, res) {
@@ -30,7 +34,10 @@ exports.login_post = function(req, res) {
                 res.redirect('/');
             });
         } else {
-            res.render('login', { error_msg: 'Login Failed' });
+            res.render('login', { 
+                error_msg: strVal.loginFailMsg,
+                slogan: strVal.appSlogan
+            });
         }
     });
 }
