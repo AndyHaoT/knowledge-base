@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Knowledge Base | Login</title>
-    <meta name="description" content="Knowledge Base | Login">
+    <title>Knowledge Base | Signup</title>
+    <meta name="description" content="Knowledge Base | Signup">
     <meta name="author" content="Hao Tang">
 
     <link rel="stylesheet" href="/css/styles.css">
@@ -18,23 +18,15 @@
     <%- include('partials/error', {msg: error_msg}); %>
     <% } %>
     <div class="container">
-        <div id="cover-area">
+        <div id="signup-cover-area">
             <img id="login-logo" src='/img/kb-logo-full.png'>
-            <img id="cover-img" src='/img/login-cover.jpg'>
+            <h1>
+                <%= signupMsg %>
+            </h1>
         </div>
-        <div id="login-area">
-            <form id="login-form" action="/login" method="POST">
-                <input type="email" name="email" placeholder="email" required onfocus="HideError()">
-                <input type="password" name="password" placeholder="password" maxlength="20" required
-                    pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
-                    onfocus="HideError()">
-                <input id="login-btn" type="submit" value="login">
-            </form>
-            <div id="signup-form">
-                <h1>
-                    <%= slogan %>
-                </h1>
-                <form action="/signup" method="POST">
+        <div id="signup-more-info-area">
+            <div id="signup-more-info-form">
+                <form>
                     <input type="text" name="firstname" placeholder="firstname" maxlength="20" required
                         pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
                         onfocus="HideError()">
@@ -52,7 +44,7 @@
                         pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
                         onfocus="HideError()">
                     <br>
-                    <input id="signup-btn" type="submit" value="signup">
+                    <input id="signup-more-info-btn" type="submit" value="signup">
                 </form>
             </div>
         </div>
