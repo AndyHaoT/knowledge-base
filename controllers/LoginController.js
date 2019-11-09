@@ -2,17 +2,18 @@ const sessionModel = require('../models/session');
 const userModel = require('../models/user');
 
 exports.root_get = function(req, res) {
-    sessionModel.createSessionTable()
-    .then(function() {
-        sessionModel.getUser(req.sessionID)
-        .then(([data, metadata]) => {
-            if (data.length != 0) {
-                res.render('index');
-            } else {
-                res.redirect('/login');
-            }
-        });
-    });
+    // sessionModel.createSessionTable()
+    // .then(function() {
+    //     sessionModel.getUser(req.sessionID)
+    //     .then(([data, metadata]) => {
+    //         if (data.length != 0) {
+    //             res.render('index');
+    //         } else {
+    //             res.redirect('/login');
+    //         }
+    //     });
+    // });
+    res.render('test');
 }
 
 exports.login_get = function(req, res) {
