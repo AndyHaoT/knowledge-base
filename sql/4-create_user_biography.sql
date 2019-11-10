@@ -14,7 +14,9 @@ CREATE TABLE IF NOT EXISTS `user_biography` (
   INDEX `user_primary_info_user_firstname_BTREE` (`user_firstname` ASC) VISIBLE,
   CONSTRAINT `user_user_biography_user_id_FK`
     FOREIGN KEY (`user_id`)
-    REFERENCES `user` (`user_id`))
+    REFERENCES `user` (`user_id`)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci
