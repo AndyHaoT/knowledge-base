@@ -4,15 +4,22 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon",
+    "sql": "node ./sql/runsql.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Cody Ning; Hao Tang; Harman Minhas;Sam Tadey; Siya Peng",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.7.1",
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
-    "mysql2": "^2.0.0"
+    "fs-extra": "^8.1.0",
+    "mysql2": "^2.0.0",
+    "nodemon": "^1.19.4"
   }
 }
