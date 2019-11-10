@@ -32,13 +32,19 @@ Copy the following to your meta.json
 
 ## Run DEV
 
-### 1. Make sure your database is up to date
+### 1. Install all dependencies
+Run the followng command
+```sh
+npm install
+```
+
+### 2. Make sure your database is up to date
 Run the followng command
 ```sh
 npm run sql
 ```
 
-### 2. Start developing
+### 3. Start developing
 Use the following command to run the server with nodemon
 ```sh
 npm run dev
