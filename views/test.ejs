@@ -13,7 +13,40 @@
 </head>
 
 <body>
-    <%- include('partials/posts_container', {posts: {subject: "Test", num_replies: 8, time: "Jan 2019", topic: "Php", content: "This is the best post that I have ever made. It is the best because everyone is replying to it. It makes me feel good."}}); %> 
+    <%- include('partials/posts_container', {posts: 
+        [{
+            img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+            subject: "Test", 
+            num_replies: 8, 
+            time: "Jan 2019", 
+            topic: "Php", 
+            content: "This is the best. This is the best. I am the best. This is the best post that I have ever made. It is the best because everyone is replying to it. It makes me feel good."
+        },
+        {
+            img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+            subject: "Test", 
+            num_replies: 8, 
+            time: "Jan 2019", 
+            topic: "Node.js", 
+            content: "This is the best post that I have ever made."
+        },
+        {
+            img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+            subject: "Test", 
+            num_replies: 8, 
+            time: "Jan 2019", 
+            topic: "Node.js", 
+            content: "This is the best post that I have ever made."
+        },
+        {
+            img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+            subject: "Test", 
+            num_replies: 8, 
+            time: "Jan 2019", 
+            topic: "Node.js", 
+            content: "This is the best post that I have ever made."
+        }
+        ]}); %> 
 </body>
 
 </html>
