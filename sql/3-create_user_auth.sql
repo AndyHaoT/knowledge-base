@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `user_auth` (
   INDEX `user_id_FK_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `user_auth_user_id_FK`
     FOREIGN KEY (`user_id`)
-    REFERENCES `mutually`.`user` (`user_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
