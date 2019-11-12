@@ -63,3 +63,37 @@
     text-align: right;
 }
 
+.post_input_container {
+    width: 400px;
+    background: rgb(230, 229, 229);
+    padding: 5px;
+}
+
+#post_title {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+form .input_items {
+    width: 98%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid gray;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+form .submit {
+    background: rgb(94, 176, 253);
+    border-color: transparent;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 5px;
+}
+
+form .submit:hover {
+    background: lightgray;
+}
+
