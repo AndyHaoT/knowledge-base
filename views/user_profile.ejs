@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Knowledge Base | Login</title>
+    <meta name="description" content="Knowledge Base | Login">
+    <meta name="author" content="Hao Tang">
+
+    <link rel="stylesheet" href="/css/user_profile.css">
+    <link rel="stylesheet" href="/css/posts.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-lg-8 picture_box">
+            <img id="profile_img" src="https://randomuser.me/portraits/med/men/1.jpg" alt="Profile Picture"/> 
+        </div>
+        <div class="col-lg-4 message_box">
+            <button class="btn-primary">Messages</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <h4>Name</h4>
+            <h5>Desc</h5>
+            <h6>Country</h6>
+        </div>
+        <div class="col-lg-4">
+            <h6>Likes</h6>
+            <h6>Posts</h6>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9 post_header">
+            <h3>All posts by</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9 post_container">
+            <%- include('partials/posts_container', {posts: 
+                [{
+                    img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+                    subject: "Test", 
+                    num_replies: 8, 
+                    time: "Jan 2019", 
+                    topic: "Php", 
+                    content: "This is the best. This is the best. I am the best. This is the best post that I have ever made. It is the best because everyone is replying to it. It makes me feel good."
+                },
+                {
+                    img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+                    subject: "Test", 
+                    num_replies: 8, 
+                    time: "Jan 2019", 
+                    topic: "Node.js", 
+                    content: "This is the best post that I have ever made."
+                },
+                {
+                    img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+                    subject: "Test", 
+                    num_replies: 8, 
+                    time: "Jan 2019", 
+                    topic: "Node.js", 
+                    content: "This is the best post that I have ever made."
+                },
+                {
+                    img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+                    subject: "Test", 
+                    num_replies: 8, 
+                    time: "Jan 2019", 
+                    topic: "Node.js", 
+                    content: "This is the best post that I have ever made."
+                }
+                ]}); %>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,7 +1,15 @@
 <!-- Post  -->
 <% posts.forEach(function(post) { %>
 <div class="post"> 
-    <div class="image_thumbnail">
+    <div class="row">
+        <div class="col-lg-4">
+            <img class="post_img" src="https://randomuser.me/portraits/med/men/1.jpg" alt="Profile Picture"/> 
+        </div>
+        <div class="col-lg-8">
+            
+        </div>
+    </div>
+    <!-- <div class="image_thumbnail">
         <img class="post_img" src="https://randomuser.me/portraits/med/men/1.jpg" alt="Profile Picture"/> 
     </div>
     <div class="post_details">
@@ -16,7 +24,7 @@
             <p class="float_left"><%=post.time%></p>
             <p class="float_right"><%=post.num_replies%> replies</p>
         </div>
-    </div>    
+    </div>     -->
 </div>
 <% }); %>
 

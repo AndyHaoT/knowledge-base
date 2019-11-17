@@ -1,0 +1,35 @@
+body {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+.picture_box {
+    background:blue;
+    height: 250px;
+}
+
+#profile_img {
+    height: 100%;
+    border-radius: 50%;
+}
+
+.message_box {
+    background:green;
+    display: flex;
+    align-items: flex-end;
+}
+
+.post_container {
+    margin-top:20px;
+    background: purple;
+    display: flex;
+    justify-content: right;
+}
+
+.post_header {
+    margin-top: 30px;
+}

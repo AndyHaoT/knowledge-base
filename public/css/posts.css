@@ -1,7 +1,7 @@
 .posts_container {
     height: 600px;
-    width: 50%;
-    padding:5px;
+    width: 90%;
+    padding: 5px;
     text-align: center;
     overflow: scroll;
 }
@@ -19,8 +19,9 @@
 }
 
 .image_thumbnail {
-    float: left;
-    width: 25%;
+    background: blue;
+    /* float: left;
+    width: 25%; */
 }
 
 .post_details {

@@ -13,7 +13,7 @@ exports.root_get = function(req, res) {
     //         }
     //     });
     // });
-    res.render('test');
+    res.render('user_profile');
 }
 
 exports.login_get = function(req, res) {
