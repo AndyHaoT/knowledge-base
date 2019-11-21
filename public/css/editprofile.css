@@ -1,0 +1,52 @@
+h1 {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2em;
+    color: black;
+    width: 100%;
+    border-bottom: solid white 2px;
+    padding-bottom: 20px;
+    margin-top: 25px;
+}
+
+.container {
+    text-align: center;
+}
+
+#profilePic {
+    border-radius: 50%;
+}
+
+h4 {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1em;
+    color: black;
+    width: 100%;
+    border-bottom: solid white 2px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+input {
+    width: 10%;
+}
+
+#updateProfileBtn {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#imageURLInput {
+    width: 30%
+}
