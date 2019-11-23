@@ -1,48 +1,66 @@
 const postModel = require('../models/post');
+const commentModel = require('../models/comment')
+const time = require('../public/js/dateconvert');
 
 /*
-Pass to another controller
+How to make this error safe?
 */
-exports.getPosts = function(req, res) {
-    let num_to_get = -1;
-    if (req.body.to_get)
-        num_to_get = req.body.to_get;
+exports.getFullPost = function(req,res) {
+    post_id = req.params.post_id;
 
-    postModel.getPosts(num_to_get)
+    postModel.getPost(post_id)
         .then(([data, metadata]) => {
-            return data;
+            post = data;
+
+            post[0].DATE_CREATED = time.convertTimestamp(post[0].DATE_CREATED);
+
+            commentModel.getComments(post_id)
+                .then(([data, metadata]) => {
+
+                    res.render('full_post', {post: post, comments: data});
+                })
         })
-        .catch(console.log(error));
+        .catch((error) => {
+            console.log(error);
+        })
 }
 
-/*
-Returns posts for a user
-To be used by other controllers
-*/
-exports.getUserPosts = function(req,res) {
-    let user_id = req.body.user_id;
-    let num_to_get = -1;
-    if (req.body.to_get)
-        num_to_get = req.body.to_get;
+exports.addComment = function(req,res) {
+    //need to add logic to get current user
+    post_id = req.params.post_id;
+    user_id = 1;
+    comment = {
+        post_id: post_id,
+        user_id: user_id,
+        post_comment_content: req.body.content
+    }
+    console.log(comment)
 
-    postModel.getUserPosts(user_id, num_to_get)
+    commentModel.add(comment)
         .then(([data, metadata]) => {
-            return data;
+            console.log(data)
+            res.redirect(req.get('referer'));
         })
-        .catch(console.log(error));
+        .catch((error) => {
+            console.log(error);
+        })
+
 }
+
 
 exports.addPost = function(req,res) {
+
+    //logic for user id
     let post = {
-        user_id: req.body.user_id,
+        user_id: 2,
         subject: req.body.subject,
         content: req.body.content,
         topic: req.body.topic,
-        time: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
     }
+    console.log(post)
 
     postModel.add(post)
     .then(function() {
-        res.redirect('home', { error_msg: '' }); //redirect back to home page
+        res.redirect(req.get('referer')); //redirect back to home page
     });
 }

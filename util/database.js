@@ -15,7 +15,7 @@ class MySQLUtil {
 
     async query() {
         try {
-            return await this.pool.query.apply(this, arguments)
+            return await this.pool.query.apply(this.pool, arguments)
         } catch (e) {
             console.log(e);
             return null;

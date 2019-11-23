@@ -1,30 +1,36 @@
 <!-- Post  -->
 <% posts.forEach(function(post) { %>
-<div class="post"> 
-    <div class="row">
+<div class="full_post">
+    <div class="row post">
         <div class="col-lg-4">
-            <img class="post_img" src="https://randomuser.me/portraits/med/men/1.jpg" alt="Profile Picture"/> 
+            <a href="/profile/<%=post.USER_ID%>" method="GET">
+                <img class="post_img" src="<%= post.USER_AVATAR_PATH %>" alt="Profile Picture"/>
+            </a> 
         </div>
         <div class="col-lg-8">
-            
+            <div class="row post_header">
+                <div class="col-lg-8 float_left">
+                    <h3><%=post.POST_SUBJECT%></h3>
+                </div>
+                <div class="col-lg-4 float_right">
+                    <h3><%=post.POST_TOPIC_TEXT%></h3>
+                </div>
+            </div>
+            <div class="row post_middle">
+                <p><%=post.POST_CONTENT%></p>
+            </div>
+            <div class="row post_footer">
+                <div class="col-lg-6 float_left">
+                    <p><%=post.DATE_CREATED%></p>
+                </div>
+                <div class="col-lg-6 float_right">
+                    <a href="/post/<%=post.POST_ID%>" method="GET">
+                        <p><%=post.REPLY_COUNT%> replies</p>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- <div class="image_thumbnail">
-        <img class="post_img" src="https://randomuser.me/portraits/med/men/1.jpg" alt="Profile Picture"/> 
-    </div>
-    <div class="post_details">
-        <div class="post_header">
-            <h3 class="float_left"><%=post.subject%></h3>
-            <h3 class="float_right"><%=post.topic%></h3>
-        </div>
-        <div class="post_middle">
-            <p><%=post.content%></p>
-        </div>
-        <div class="post_footer">
-            <p class="float_left"><%=post.time%></p>
-            <p class="float_right"><%=post.num_replies%> replies</p>
-        </div>
-    </div>     -->
 </div>
 <% }); %>
 

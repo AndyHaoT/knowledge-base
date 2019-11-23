@@ -1,16 +1,24 @@
 const db = require('../util/database');
 
+
 /*
 Gets all comments for the post_id
 */
 function getComments(post_id) {
-    return db.execute("SELECT C.USER_ID, U.IMG_URL, C.CONTENT, C.TIME FROM COMMENT C"
-        + " JOIN USERS U ON U.ID = C.USER_ID"
-        + " WHERE POST_ID = " + post_id + " ORDER BY TIME DESC");
+    if (post_id)
+    {
+        let query = "SELECT PC.POST_COMMENT_ID, PC.POST_COMMENT_CONTENT, PC.DATE_CREATED, UB.USER_ID, UB.USER_AVATAR_PATH"
+        + " FROM KNOWLEDGE_BASE.POST_COMMENT PC"
+        + " JOIN KNOWLEDGE_BASE.USER_BIOGRAPHY UB ON UB.USER_ID = PC.USER_ID"
+        + " WHERE PC.POST_ID = " + post_id
+        + " ORDER BY PC.DATE_CREATED";
+    
+        return db.query(query);
+    }
 }
 
 /*
-Adds a post
+Adds a comment
 params
     post:
         - post_id: the post id
@@ -19,9 +27,14 @@ params
         - time: the time that the post was created
 */
 function addComment(comment) {
-    return db.execute("INSERT INTO POST (POST_ID, USER_ID, CONTENT, TIME) "
-        + "VALUES (" + "" + comment.post_id + "," + comment.user_id + ",'" + post.content + "','"
-        + post.time + "')");
+    console.log("in model")
+    if (comment.post_id && comment.user_id)
+    {    let query = "INSERT INTO KNOWLEDGE_BASE.POST_COMMENT (`post_id`, `user_id`," 
+            + " `post_comment_content`)"
+            + " VALUES ( " + comment.post_id + "," + comment.user_id + ",'" + comment.post_comment_content + "');";
+        
+        return db.query(query);
+    }
 }
 
 module.exports = {

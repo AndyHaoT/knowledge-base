@@ -1,19 +1,39 @@
 const db = require('../util/database');
 
+
+function getPost(post_id) {
+    let query = "SELECT P.POST_ID, P.POST_SUBJECT, P.POST_CONTENT, P.DATE_CREATED, U.USER_AVATAR_PATH, PT.POST_TOPIC_TEXT"
+        + " FROM KNOWLEDGE_BASE.POST P"
+        + " JOIN KNOWLEDGE_BASE.USER_BIOGRAPHY U ON U.USER_ID = P.USER_ID"
+        + " JOIN KNOWLEDGE_BASE.POST_TOPIC PT ON PT.POST_TOPIC_CODE = P.POST_TOPIC_CODE"
+        + " WHERE P.POST_ID = " + post_id;
+
+    if (post_id)
+        return db.query(query);
+    else
+        console.log("No post_id");
+}
+
 /*
 Returns the the most recently created posts
 params
     number: The number of posts to return ordered by recent posts
     - If null, will return all posts ordered by recent posts
 */
-function getPosts(number = -1) {
-    if (number > 0)
-    {
-        return db.execute("SELECT USER_ID, SUBJECT, CONTENT, TOPIC, TIME FROM POST "
-            + "ORDER BY TIME DESC LIMIT " + number);
-    }
-    return db.execute("SELECT USER_ID, SUBJECT, CONTENT, TOPIC, TIME FROM POST "
-        + "ORDER BY TIME DESC");
+function getPosts(number) {
+    let query = "SELECT P.POST_ID, P.POST_SUBJECT, P.POST_CONTENT, P.DATE_CREATED, U.USER_AVATAR_PATH, PT.POST_TOPIC_TEXT, COUNT(PC.POST_COMMENT_ID) AS REPLY_COUNT"
+        + " FROM KNOWLEDGE_BASE.POST P"
+        + " JOIN KNOWLEDGE_BASE.USER_BIOGRAPHY U ON U.USER_ID = P.USER_ID"
+        + " JOIN KNOWLEDGE_BASE.POST_TOPIC PT ON PT.POST_TOPIC_CODE = P.POST_TOPIC_CODE"
+        + " LEFT JOIN KNOWLEDGE_BASE.POST_COMMENT PC ON PC.POST_ID = P.POST_ID"
+        + " GROUP BY P.POST_ID"
+        + " ORDER BY DATE_CREATED DESC";
+    number > 0 ? query += "LIMIT " + number: '';
+
+    if (user_id)
+        return db.query(query);
+    else
+        console.log("No user_id");
 }
 
 /*
@@ -23,14 +43,21 @@ Params
     number: The number of posts to return ordered by recent posts
     - If null, will return all posts ordered by recent posts 
 */
-function getUserPosts(user_id, number = -1) {
-    if (number > 0)
-    {
-        return db.execute("SELECT USER_ID, SUBJECT, CONTENT, TOPIC, TIME FROM POST"
-            + "WHERE USER_ID = " + user_id + " ORDER BY TIME DESC LIMIT " + number);
-    }
-    return db.execute("SELECT USER_ID, SUBJECT, CONTENT, TOPIC, TIME FROM POST "
-        + "WHERE USER_ID = " + user_id + " ORDER BY TIME DESC");
+function getUserPosts(user_id, number) {
+    let query = "SELECT P.POST_ID, P.POST_SUBJECT, P.POST_CONTENT, P.DATE_CREATED, U.USER_AVATAR_PATH, PT.POST_TOPIC_TEXT, COUNT(PC.POST_COMMENT_ID) AS REPLY_COUNT"
+        + " FROM KNOWLEDGE_BASE.POST P"
+        + " JOIN KNOWLEDGE_BASE.USER_BIOGRAPHY U ON U.USER_ID = P.USER_ID"
+        + " JOIN KNOWLEDGE_BASE.POST_TOPIC PT ON PT.POST_TOPIC_CODE = P.POST_TOPIC_CODE"
+        + " LEFT JOIN KNOWLEDGE_BASE.POST_COMMENT PC ON PC.POST_ID = P.POST_ID"
+        + " WHERE P.USER_ID = " + user_id
+        + " GROUP BY P.POST_ID"
+        + " ORDER BY DATE_CREATED DESC";
+    number > 0 ? query += "LIMIT " + number: '';
+
+    if (user_id)
+        return db.query(query);
+    else
+        console.log("No user_id");
 }
 
 /*
@@ -44,13 +71,18 @@ params
         - time: the time that the post was created
 */
 function addPost(post) {
-    return db.execute("INSERT INTO POST (USER_ID, SUBJECT, CONTENT, TOPIC, TIME) "
-        + "VALUES (" + "" + post.user_id + ",'" + post.subject + "','" + post.content + "','"
-        + post.topic + "','" + post.time + "')");
+    return db.query("INSERT INTO KNOWLEDGE_BASE.POST (USER_ID, POST_SUBJECT, POST_CONTENT, POST_TOPIC_CODE) "
+        + "VALUES ( " + post.user_id + ",'" + post.subject + "','" + post.content + "'," + post.topic + ");");
+}
+
+function getTopics() {
+    return db.query("SELECT POST_TOPIC_CODE, POST_TOPIC_TEXT FROM KNOWLEDGE_BASE.POST_TOPIC");
 }
 
 module.exports = {
+    getPost: getPost,
     getPosts: getPosts,
     getUserPosts: getUserPosts,
-    add : addPost,
+    add: addPost,
+    getTopics: getTopics,
 }

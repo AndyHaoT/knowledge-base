@@ -6,11 +6,10 @@
     <textarea class="input_items" name="content" placeholder="Question" rows="5" required></textarea><br>
 
     <select class="input_items" name="topic" required>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="fiat">Fiat</option>
-        <option value="audi">Audi</option>
+        <% topics.forEach(function(topic) { %>
+            <option value="<%=topic.POST_TOPIC_CODE%>"><%=topic.POST_TOPIC_TEXT%></option>
+        <% }); %>
     </select><br>
 
-    <input class="input_items submit" type="button" value="Post to Timeline"> 
+    <input class="input_items submit" type="submit" value="Post to Timeline"> 
 </form>

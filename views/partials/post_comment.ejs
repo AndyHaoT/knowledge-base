@@ -1,0 +1,23 @@
+<% comments.forEach(function(comment) { %>
+    <div class="comment">
+        <div class="row">
+            <div class="col-lg-4">
+                <a href="/profile/<%=comment.USER_ID%>">
+                    <img class="post_img" src="<%= comment.USER_AVATAR_PATH %>" alt="Profile Picture"/>
+                </a>
+            </div>
+            <div class="col-lg-8">
+                <p><%= comment.POST_COMMENT_CONTENT %></p>
+            </div>
+        </div>
+    </div>
+<% }); %>
+
+<div id="comment_form">
+    <form method="POST" action="/post/<%=post_id%>/add"> 
+
+        <textarea id="comment_content" name="content" placeholder="Add your reply" rows="5" required></textarea><br>
+    
+        <input class="submit" type="submit" value="Comment"> 
+    </form>
+</div>

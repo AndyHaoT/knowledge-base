@@ -9,13 +9,14 @@
     <meta name="author" content="Sam Tadey">
 
     <link rel="stylesheet" href="/css/posts.css">
-    <!-- <script src="/js/script.js" defer></script> -->
+    <script src="/js/posts.js" defer></script>
 </head>
 
 <body>
     <%- include('partials/posts_container', {posts: 
         [{
-            img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+            USER_ID: 1,
+            USER_AVATAR_PATH: "https://randomuser.me/portraits/med/men/1.jpg", 
             subject: "Test", 
             num_replies: 8, 
             time: "Jan 2019", 
@@ -23,7 +24,8 @@
             content: "This is the best. This is the best. I am the best. This is the best post that I have ever made. It is the best because everyone is replying to it. It makes me feel good."
         },
         {
-            img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+            USER_ID: 2,
+            USER_AVATAR_PATH: "https://randomuser.me/portraits/med/men/9.jpg", 
             subject: "Test", 
             num_replies: 8, 
             time: "Jan 2019", 
@@ -31,7 +33,8 @@
             content: "This is the best post that I have ever made."
         },
         {
-            img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+            USER_ID: 3,
+            USER_AVATAR_PATH: "https://randomuser.me/portraits/med/men/1.jpg", 
             subject: "Test", 
             num_replies: 8, 
             time: "Jan 2019", 
@@ -39,7 +42,7 @@
             content: "This is the best post that I have ever made."
         },
         {
-            img_url: "https://randomuser.me/portraits/med/men/1.jpg", 
+            USER_AVATAR_PATH: "https://randomuser.me/portraits/med/female/1.jpg", 
             subject: "Test", 
             num_replies: 8, 
             time: "Jan 2019", 
