@@ -6,27 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/editprofile.css" type="text/css">
+    <link rel="stylesheet" href="/css/editprofile.css" type="text/css">
+    <link rel="stylesheet" href="/css/searchbar.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Edit Profile</title>
 </head>
 
 <body>
+    <%- include('partials/searchbar') %>
     <div class="container">
         <h1 id="EditProfileHeading">Edit Profile</h1>
-        <img src="https://statici.behindthevoiceactors.com/behindthevoiceactors/_img/chars/kid-flash-bart-allen-young-justice-89.9.jpg" alt="" id="profilePic">
+        <img src="<%= data.imageURL %>" alt="" id="profilePic">
         <br>
         <form action="/updateProfile" method="POST">
             <h4>Image URL</h4>
-            <input type="url" name="imageURL" id="imageURLInput">
+            <input type="url" name="imageURL" id="imageURLInput" value="<%= data.imageURL %>" required>
             <h4>First name</h4>
-            <input type="text" name="firstname">
+            <input type="text" name="firstname" value="<%= data.firstname %>" required>
             <h4>Last name</h4>
-            <input type="text" name="lastname">
+            <input type="text" name="lastname" value="<%= data.lastname %>" required>
             <h4>Country</h4>
-            <input type="text" name="country">
+            <input type="text" name="country" value="<%= data.country %>" required>
             <h4>Date of Birth</h4>
-            <input type="date" name="dateOfBirth">
+            <input type="date" name="dateOfBirth" value="<%= data.dateOfBirth %>" required>
             <h4>About</h4>
-            <textarea rows="6" cols="70" id="about" name="about"></textarea><br>
+            <textarea rows="6" cols="70" id="about" name="about"><%= data.about %></textarea><br>
             <button type="submit" name="button" id="updateProfileBtn">Update</button>
         </form>
     </div>

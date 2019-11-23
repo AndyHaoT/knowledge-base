@@ -1,7 +1,7 @@
 const db = require('../util/database');
 
 function getProfiletoEdit(id) {
-    return db.query("SELECT * FROM user_biography WHERE user_id = ?", [id]);
+    return db.query("SELECT *, DATE_FORMAT(user_birthday, '%Y-%m-%d') AS date FROM user_biography WHERE user_id = ?", [id]);
 }
 
 

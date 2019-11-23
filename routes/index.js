@@ -11,7 +11,7 @@ router.post('/login', LoginController.login_post);
 
 router.get('/logout', LoginController.logout_get);
 
-router.post('/editProfile', EditProfileController.getProfiletoEdit);
+router.get('/editProfile', EditProfileController.getProfiletoEdit);
 
 router.post('/updateProfile', EditProfileController.updateProfile);
 

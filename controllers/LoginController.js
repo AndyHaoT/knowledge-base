@@ -1,5 +1,6 @@
 const sessionModel = require('../models/session');
 const userModel = require('../models/user');
+const editProfileModel = require('../models/editProfile');
 
 exports.root_get = function(req, res) {
     // sessionModel.createSessionTable()
@@ -13,7 +14,7 @@ exports.root_get = function(req, res) {
     //         }
     //     });
     // });
-    res.render('editprofile');
+    res.redirect('/editProfile');
 }
 
 exports.login_get = function(req, res) {
