@@ -24,9 +24,11 @@
                     <p><%=post.DATE_CREATED%></p>
                 </div>
                 <div class="col-lg-6 float_right">
+                    <%if (post.REPLY_COUNT >= 0) { %>
                     <a href="/post/<%=post.POST_ID%>" method="GET">
                         <p><%=post.REPLY_COUNT%> replies</p>
                     </a>
+                    <% } %>
                 </div>
             </div>
         </div>
@@ -34,5 +36,3 @@
 </div>
 <% }); %>
 
-
-<!-- Hidden Comments -->

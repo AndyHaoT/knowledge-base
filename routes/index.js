@@ -20,5 +20,7 @@ router.post('/post/:post_id/add', PostController.addComment);
 
 router.get('/profile/:user_id', UserProfileController.loadProfile);
 
+router.get('/profile/:user_to_like/like', UserProfileController.likeUser);
+
 
 module.exports = router;

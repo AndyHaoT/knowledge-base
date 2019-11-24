@@ -6,14 +6,18 @@ const time = require('../public/js/dateconvert');
 exports.loadProfile = function(req, res) {
     let user_id = req.params.user_id;
     
-    profileModel.getProfile(user_id)
+    //add logic to get user_logged_in HCODE for now
+    session_id = 4;
+    profileModel.getProfile(user_id, session_id)
         .then(([data, metadata]) => {
             let profile = data;
-            
+
+            if (user_id == session_id)
+                profile[0].HAS_LIKE = 1; //can't like yourself
+
+            console.log(profile);
             postModel.getUserPosts(user_id)
-                .then(([data, metadata]) => {
-                    //console.log(profile[0])
-                    
+                .then(([data, metadata]) => {                   
                     for (let i = 0; i < data.length; i++)
                         data[i].DATE_CREATED = time.convertTimestamp(data[i].DATE_CREATED);
 
@@ -23,6 +27,22 @@ exports.loadProfile = function(req, res) {
         .catch((error) => {
             console.log(error);
         })
+}
+
+exports.likeUser = function(req, res) {
+    //add logic to get currently logged in user?
+    let obj = {
+        user_id: 4,
+        user_liked_id: req.params.user_to_like
+    };
+
+    profileModel.likeUser(obj)
+    .then(() => {
+        res.redirect(req.get('referer'));
+    })
+    .catch((error) => {
+        console.log(error)
+    })
 }
 
 // exports.getComments = function(req, res) {

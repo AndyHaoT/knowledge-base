@@ -33,7 +33,13 @@
             <h6><%=profile.USER_COUNTRY_CODE%></h6>
         </div>
         <div class="col-lg-4">
-            <h6><%=profile.LIKE_COUNT%> Likes</h6>
+            <%if (profile.HAS_LIKE == null) { %>
+            <a href="/profile/<%=profile.USER_ID%>/like" method="GET">
+            <% } %>
+                <h6><%=profile.LIKE_COUNT%> Likes</h6>
+            <%if (profile.HAS_LIKE == null) { %>
+            </a>
+            <% } %>
             <h6><%=profile.POST_COUNT%> Posts</h6>
         </div>
     </div>

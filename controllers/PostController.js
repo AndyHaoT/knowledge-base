@@ -52,7 +52,7 @@ exports.addPost = function(req,res) {
 
     //logic for user id
     let post = {
-        user_id: 2,
+        user_id: 4,
         subject: req.body.subject,
         content: req.body.content,
         topic: req.body.topic,
