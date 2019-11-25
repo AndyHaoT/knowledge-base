@@ -1,11 +1,9 @@
-
-
 .comment {
     width: 60%;
     float: right;
     height: 100px;
+    background: rgb(226, 226, 226);
     margin-bottom: 20px;
-    background: beige;
 }
 
 #comment_content {
