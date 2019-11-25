@@ -8,10 +8,7 @@ function getPost(post_id) {
         + " JOIN KNOWLEDGE_BASE.POST_TOPIC PT ON PT.POST_TOPIC_CODE = P.POST_TOPIC_CODE"
         + " WHERE P.POST_ID = " + post_id;
 
-    if (post_id)
-        return db.query(query);
-    else
-        console.log("No post_id");
+    return db.query(query);
 }
 
 /*
@@ -30,10 +27,7 @@ function getPosts(number) {
         + " ORDER BY DATE_CREATED DESC";
     number > 0 ? query += "LIMIT " + number: '';
 
-    if (user_id)
-        return db.query(query);
-    else
-        console.log("No user_id");
+    return db.query(query);
 }
 
 /*
@@ -54,10 +48,7 @@ function getUserPosts(user_id, number) {
         + " ORDER BY DATE_CREATED DESC";
     number > 0 ? query += "LIMIT " + number: '';
 
-    if (user_id)
-        return db.query(query);
-    else
-        console.log("No user_id");
+    return db.query(query);
 }
 
 /*

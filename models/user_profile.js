@@ -1,13 +1,5 @@
 const db = require('../util/database');
 
-exports.getTopics = async (req, res) => {
-
-    topicmodel.getTopics()
-    .then(([data, metadata]) => {
-        res.render('yourview')
-    });
-}
-
 /*
 Returns profile information for the profile page for the currently logged in user
 */

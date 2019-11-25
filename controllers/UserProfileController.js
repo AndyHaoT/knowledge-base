@@ -6,7 +6,7 @@ const time = require('../public/js/dateconvert');
 exports.loadProfile = function(req, res) {
     let user_id = req.params.user_id;
     
-    //add logic to get user_logged_in HCODE for now
+    //TODO get logged in USER
     session_id = 4;
     profileModel.getProfile(user_id, session_id)
         .then(([data, metadata]) => {
@@ -30,7 +30,7 @@ exports.loadProfile = function(req, res) {
 }
 
 exports.likeUser = function(req, res) {
-    //add logic to get currently logged in user?
+    //TODO get logged in USER
     let obj = {
         user_id: 4,
         user_liked_id: req.params.user_to_like

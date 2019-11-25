@@ -6,15 +6,6 @@ const time = require('../public/js/dateconvert')
 
 const postController = require('../controllers/PostController')
 
-//MUST MOVE
-function convertTimestamp(date) {
-    let monthNames = [
-        "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"
-    ];
-    current_date = new Date(date);
-    return current_date.getDate() + " " + monthNames[current_date.getMonth()] + " " + current_date.getFullYear();
-}
-
 exports.root_get = function(req, res) {
     // sessionModel.createSessionTable()
     // .then(function() {
