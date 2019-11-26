@@ -1,0 +1,38 @@
+<!-- Post  -->
+<% posts.forEach(function(post) { %>
+<div class="full_post">
+    <div class="row post">
+        <div class="col-lg-4">
+            <a href="/profile/<%=post.USER_ID%>" method="GET">
+                <img class="post_img" src="<%= post.USER_AVATAR_PATH %>" alt="Profile Picture"/>
+            </a> 
+        </div>
+        <div class="col-lg-8">
+            <div class="row post_header">
+                <div class="col-lg-8 float_left">
+                    <h3><%=post.POST_SUBJECT%></h3>
+                </div>
+                <div class="col-lg-4 float_right">
+                    <h3><%=post.POST_TOPIC_TEXT%></h3>
+                </div>
+            </div>
+            <div class="row post_middle">
+                <p><%=post.POST_CONTENT%></p>
+            </div>
+            <div class="row post_footer">
+                <div class="col-lg-6 float_left">
+                    <p><%=post.DATE_CREATED%></p>
+                </div>
+                <div class="col-lg-6 float_right">
+                    <%if (post.REPLY_COUNT >= 0) { %>
+                    <a href="/post/<%=post.POST_ID%>" method="GET">
+                        <p><%=post.REPLY_COUNT%> replies</p>
+                    </a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% }); %>
+

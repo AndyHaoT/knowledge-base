@@ -1,0 +1,19 @@
+.comment {
+    width: 60%;
+    float: right;
+    height: 100px;
+    background: rgb(226, 226, 226);
+    margin-bottom: 20px;
+}
+
+#comment_content {
+    width: 100%;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+#comment_form {
+    float: right;
+    width: 60%;
+    margin-bottom: 20px;
+}
