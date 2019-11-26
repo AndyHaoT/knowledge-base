@@ -1,6 +1,10 @@
 const sessionModel = require('../models/session');
 const userModel = require('../models/user');
+const postModel = require('../models/post');
+const profileModel = require('../models/user_profile')
+const time = require('../public/js/dateconvert')
 const editProfileModel = require('../models/editProfile');
+const postController = require('../controllers/PostController')
 
 exports.root_get = function(req, res) {
     // sessionModel.createSessionTable()
@@ -14,6 +18,25 @@ exports.root_get = function(req, res) {
     //         }
     //     });
     // });
+
+    // let user_id = 1;
+    // profileModel.getProfile(user_id)
+    //     .then(([data, metadata]) => {
+    //         let profile = data;
+            
+    //         postModel.getUserPosts(1)
+    //             .then(([data, metadata]) => {
+    //                 console.log(profile[0])
+                    
+    //                 for (let i = 0; i < data.length; i++)
+    //                     data[i].DATE_CREATED = convertTimestamp(data[i].DATE_CREATED);
+    //                 res.render('user_profile', {profile: profile[0], posts: data});
+    //             })
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //     })
+
     res.redirect('/editProfile');
 }
 

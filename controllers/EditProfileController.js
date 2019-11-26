@@ -3,7 +3,7 @@ const editProfileModel = require('../models/editProfile');
 // Must pass the user ID somehow when calling this function
 exports.getProfiletoEdit = function (req, res) {
     let id = req.body.id;
-    editProfileModel.getProfiletoEdit(id)
+    editProfileModel.getProfiletoEdit(123)
         .then(([data, metadata]) => {
             console.log(data[0].DATE_FORMAT);
             console.log(data);
@@ -33,5 +33,5 @@ exports.updateProfile = function (req, res) {
         about: req.body.about
     };
 
-    editProfileModel.updateProfile(id, data);
+    editProfileModel.updateProfile(123, data);
 }

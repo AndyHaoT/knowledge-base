@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Knowledge Base | Login</title>
+    <meta name="description" content="Knowledge Base | Login">
+    <meta name="author" content="Hao Tang">
+
+    <script src="/js/posts.js" defer></script>
+    <link rel="stylesheet" href="/css/user_profile.css">
+    <link rel="stylesheet" href="/css/posts.css">
+    <link rel="stylesheet" href="/css/post_comment.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id='profile' class="row">
+        <div class="col-lg-8 picture_box">
+            <img id="profile_img" src="<%= profile.USER_AVATAR_PATH %>" alt="Profile Picture"/> 
+        </div>
+        <div class="col-lg-4 message_box">
+            <button class="btn-primary">Messages</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <h4><%=profile.USER_FIRSTNAME%> <%=profile.USER_LASTNAME%></h4>
+            <h5><%=profile.USER_BIO%></h5>
+            <h6><%=profile.USER_COUNTRY_CODE%></h6>
+        </div>
+        <div class="col-lg-4">
+            <%if (profile.HAS_LIKE == null) { %>
+            <a href="/profile/<%=profile.USER_ID%>/like" method="GET">
+            <% } %>
+                <h6><%=profile.LIKE_COUNT%> Likes</h6>
+            <%if (profile.HAS_LIKE == null) { %>
+            </a>
+            <% } %>
+            <h6><%=profile.POST_COUNT%> Posts</h6>
+        </div>
+    </div>
+
+
+    <div class="col-lg-12 posts_header">
+        <h3>All posts by <%=profile.USER_FIRSTNAME%></h3>
+    </div>
+
+    <div class="col-lg-8 user_posts_container">
+        <%- include('partials/posts_container', {posts: posts}); %>
+    </div>
+</body>
+
+</html>
