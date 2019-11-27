@@ -19,7 +19,6 @@ function getProfiletoEdit(id) {
 // }
 
 function updateProfile(id, data) {
-    console.log("data model: " + data.dateOfBirth);
     
     db.query("UPDATE user_biography SET user_avatar_path = ?," +
     "user_firstname = ?, user_lastname = ?, user_country_code = ?," +

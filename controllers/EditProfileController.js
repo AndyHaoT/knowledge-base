@@ -5,8 +5,6 @@ exports.getProfiletoEdit = function (req, res) {
     let id = req.body.id;
     editProfileModel.getProfiletoEdit(123)
         .then(([data, metadata]) => {
-            console.log(data[0].DATE_FORMAT);
-            console.log(data);
             res.render('editprofile', {
                 data: {
                     firstname: data[0].user_firstname,

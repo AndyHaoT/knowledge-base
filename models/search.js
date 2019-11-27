@@ -7,11 +7,11 @@ function getSearchResults(keyWord) {
         " JOIN KNOWLEDGE_BASE.USER_BIOGRAPHY U ON U.USER_ID = P.USER_ID" +
         " JOIN KNOWLEDGE_BASE.POST_TOPIC PT ON PT.POST_TOPIC_CODE = P.POST_TOPIC_CODE" +
         " LEFT JOIN KNOWLEDGE_BASE.POST_COMMENT PC ON PC.POST_ID = P.POST_ID" +
-        " WHERE P.POST_SUBJECT LIKE '%" + keyWord + "%'" +
+        " WHERE P.POST_SUBJECT LIKE ?"  +
         " GROUP BY P.POST_ID" +
         " ORDER BY DATE_CREATED DESC";
 
-    return db.query(query);
+    return db.query(query, ["%" + keyWord + "%"]);
 }
 
 module.exports = {

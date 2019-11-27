@@ -9,13 +9,8 @@ exports.getSearchResults = function (req, res) {
     searchModel.getSearchResults(searchKeyword)
         .then(([data, metadata]) => {
             post = data;
-            post[0].DATE_CREATED = time.convertTimestamp(post[0].DATE_CREATED);
-
-            commentModel.getComments(post_id)
-                .then(([data, metadata]) => {
-
-                    res.render('full_post', {post: post, comments: data});
-                })
+            console.log(data);
+            res.render('searchResults', {posts: data});
         })
         .catch((error) => {
             console.log(error);
