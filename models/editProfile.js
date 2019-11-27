@@ -21,7 +21,7 @@ function getProfiletoEdit(id) {
 function updateProfile(id, data) {
     
     db.query("UPDATE user_biography SET user_avatar_path = ?," +
-    "user_firstname = ?, user_lastname = ?, user_country_code = ?," +
+    "user_firstname = ?, user_lastname = ?, user_country = ?," +
     "user_birthday = ?, user_bio = ?" +
     "WHERE user_id = ?", [data.imageUrl, data.firstname, data.lastname, data.country, data.dateOfBirth, data.about, id]);
 }
