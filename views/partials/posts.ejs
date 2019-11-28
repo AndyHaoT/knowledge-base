@@ -1,29 +1,29 @@
 <!-- Post  -->
 <% posts.forEach(function(post) { %>
-<div class="full_post">
+<div class="row full_post">
     <div class="row post">
-        <div class="col-lg-4">
+        <div class="col-md-4">
             <a href="/profile/<%=post.USER_ID%>" method="GET">
                 <img class="post_img" src="<%= post.USER_AVATAR_PATH %>" alt="Profile Picture"/>
             </a> 
         </div>
-        <div class="col-lg-8">
+        <div class="col-md-8">
             <div class="row post_header">
-                <div class="col-lg-8 float_left">
-                    <h3><%=post.POST_SUBJECT%></h3>
+                <div class="col-md-8 float_left">
+                    <h4><%=post.POST_SUBJECT%></h4>
                 </div>
-                <div class="col-lg-4 float_right">
-                    <h3><%=post.POST_TOPIC_TEXT%></h3>
+                <div class="col-md-4 float-right">
+                    <div class='topic'><h4><%=post.POST_TOPIC_TEXT%></h4></div>
                 </div>
             </div>
             <div class="row post_middle">
                 <p><%=post.POST_CONTENT%></p>
             </div>
             <div class="row post_footer">
-                <div class="col-lg-6 float_left">
+                <div class="col-md-6 float_left">
                     <p><%=post.DATE_CREATED%></p>
                 </div>
-                <div class="col-lg-6 float_right">
+                <div class="col-md-6 float_right">
                     <%if (post.REPLY_COUNT >= 0) { %>
                     <a href="/post/<%=post.POST_ID%>" method="GET">
                         <p><%=post.REPLY_COUNT%> replies</p>
