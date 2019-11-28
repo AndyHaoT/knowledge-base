@@ -32,4 +32,5 @@ exports.updateProfile = function (req, res) {
     };
 
     editProfileModel.updateProfile(123, data);
+    res.redirect('/home');
 }

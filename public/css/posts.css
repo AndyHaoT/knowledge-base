@@ -6,6 +6,7 @@ post_container {
 .full_post {
     width:100%;
     height:100%;
+    margin-top: 20px;
 }
 
 .post {
@@ -42,6 +43,8 @@ post_container {
 
 .post_img {
     border-radius: 50%;
+    height: 175px;
+    width: 175px;
 }
 
 .post_header {
