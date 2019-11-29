@@ -27,8 +27,8 @@
             <input type="text" name="lastname" value="<%= data.lastname %>" required>
             <h4>Country</h4> <p id="hidden"><%= data.country %></p>
             <%- include('partials/countryList') %>
-            <h4>Date of Birth</h4>
-            <input type="date" name="dateOfBirth" value="<%= data.dateOfBirth %>" required>
+            <h4>Date of Birth (Year-Month-Day)</h4>
+            <input type="date" id="dateInput" name="dateOfBirth" value="<%= data.dateOfBirth %>" required>
             <h4>About</h4>
             <textarea rows="6" cols="70" id="about" name="about"><%= data.about %></textarea><br>
             <button type="submit" name="button" id="updateProfileBtn">Update</button>

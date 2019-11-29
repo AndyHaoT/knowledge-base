@@ -7,6 +7,7 @@ h1 {
     border-bottom: solid white 2px;
     padding-bottom: 20px;
     margin-top: 25px;
+    
 }
 
 .container {
@@ -27,12 +28,13 @@ h4 {
     width: 100%;
     border-bottom: solid white 2px;
     padding-bottom: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     margin-top: 20px;
 }
 
 input {
     width: 10%;
+    height: 20px;
 }
 
 #updateProfileBtn {
@@ -51,4 +53,12 @@ input {
 
 #imageURLInput {
     width: 30%
+}
+
+#country {
+    height: 23px;
+}
+
+#dateInput {
+    height: 22px;
 }

@@ -1,5 +1,7 @@
+
 .searchForm {
     display: inline;
+    margin-right: 0px;
 }
 
 .logoutForm {
@@ -8,7 +10,6 @@
 
 #kblogo {
     position: relative;
-    right: 300px;
     width: 60px;
     height: 50px;
     right: 250px;
@@ -17,11 +18,15 @@
     vertical-align: middle;   
 }
 
-.searchForm input{
+.searchForm #searchInput{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: inline-block;
     font-size: 1em;
-    height: 25px;
+    height: 26px;
+    vertical-align: middle;
+    width: 20%;
+    box-sizing: unset;   
+    outline: none;
 }
 
 #searchIcon {
@@ -40,12 +45,14 @@
   color: white;
   padding: 1px 15px;
   padding-bottom: 4px;
-  margin-left: 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
   cursor: pointer;
+  vertical-align: middle;  
+  margin-left: -5px;  
+  height: 32px; 
 
 }
 
@@ -63,10 +70,13 @@
     display: inline-block;
     font-size: 15px;
     cursor: pointer;
+    vertical-align: middle;     
 }
 
 .searchContainer {
     margin-top: 30px;
     text-align: center;
+    padding: 0px;
+    box-sizing: unset;
     
 }
