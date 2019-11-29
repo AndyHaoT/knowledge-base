@@ -1,36 +1,26 @@
 <!-- Post  -->
 <% posts.forEach(function(post) { %>
-<div class="row full_post">
-    <div class="row post">
-        <div class="col-md-4">
-            <a href="/profile/<%=post.USER_ID%>" method="GET">
-                <img class="post_img" src="<%= post.USER_AVATAR_PATH %>" alt="Profile Picture"/>
-            </a> 
+<div class="post2">
+    <div class="img">
+        <a href="/profile/<%=post.USER_ID%>" method="GET">
+            <img class="post_img" src="<%= post.USER_AVATAR_PATH %>" alt="Profile Picture"/>
+        </a> 
+    </div>
+    <div class="content">
+        <div class="top rows">
+            <div><h4><%=post.POST_SUBJECT%></h4></div>
+            <div class="right topic"><h4><%=post.POST_TOPIC_TEXT%></h4></div>
         </div>
-        <div class="col-md-8">
-            <div class="row post_header">
-                <div class="col-md-8 float_left">
-                    <h4><%=post.POST_SUBJECT%></h4>
-                </div>
-                <div class="col-md-4 float-right">
-                    <div class='topic'><h4><%=post.POST_TOPIC_TEXT%></h4></div>
-                </div>
-            </div>
-            <div class="row post_middle">
-                <p><%=post.POST_CONTENT%></p>
-            </div>
-            <div class="row post_footer">
-                <div class="col-md-6 float_left">
-                    <p><%=post.DATE_CREATED%></p>
-                </div>
-                <div class="col-md-6 float_right">
-                    <%if (post.REPLY_COUNT >= 0) { %>
-                    <a href="/post/<%=post.POST_ID%>" method="GET">
-                        <p><%=post.REPLY_COUNT%> replies</p>
-                    </a>
-                    <% } %>
-                </div>
-            </div>
+        <div class="middle">
+            <p><%=post.POST_CONTENT%></p>
+        </div>
+        <div class="rows">
+            <div><p class="foot"><%=post.DATE_CREATED%></p></div>
+            <%if (post.REPLY_COUNT >= 0) { %>
+            <div class="right"><a class="right" href="/post/<%=post.POST_ID%>" method="GET">
+                <p><%=post.REPLY_COUNT%> replies</p>
+            </a></div>
+            <% } %>
         </div>
     </div>
 </div>
