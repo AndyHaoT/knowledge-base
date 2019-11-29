@@ -7,8 +7,8 @@
         </a> 
     </div>
     <div class="content">
-        <div class="top rows">
-            <div><h4><%=post.POST_SUBJECT%></h4></div>
+        <div class="top">
+            <div class="left"><h4><%=post.POST_SUBJECT%></h4></div>
             <div class="right topic"><h4><%=post.POST_TOPIC_TEXT%></h4></div>
         </div>
         <div class="middle">
@@ -17,7 +17,7 @@
         <div class="rows">
             <div><p class="foot"><%=post.DATE_CREATED%></p></div>
             <%if (post.REPLY_COUNT >= 0) { %>
-            <div class="right"><a class="right" href="/post/<%=post.POST_ID%>" method="GET">
+            <div class="rep"><a href="/post/<%=post.POST_ID%>" method="GET">
                 <p><%=post.REPLY_COUNT%> replies</p>
             </a></div>
             <% } %>

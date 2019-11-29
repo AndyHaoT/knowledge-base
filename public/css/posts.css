@@ -78,6 +78,15 @@ form .submit:hover {
     width: 50%;
 }
 
+.left {
+    float: left;
+    width: 80%;
+}
+
+.rep {
+    text-align: right;
+}
+
 .middle {
     height: 50%;
 }
@@ -87,5 +96,7 @@ form .submit:hover {
 }
 
 .right {
+    float: left;
+    width: 20%;
     text-align: center;
 }
