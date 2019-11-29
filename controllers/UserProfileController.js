@@ -15,12 +15,12 @@ exports.loadProfile = function(req, res) {
             if (user_id == session_id)
                 profile[0].HAS_LIKE = 1; //can't like yourself
 
-            console.log(profile);
-            postModel.getUserPosts(user_id)
+            postModel.getPosts(0, 0, user_id)
                 .then(([data, metadata]) => {                   
                     for (let i = 0; i < data.length; i++)
                         data[i].DATE_CREATED = time.convertTimestamp(data[i].DATE_CREATED);
 
+                    console.log(data)
                     res.render('user_profile', {profile: profile[0], posts: data});
                 })
         })
