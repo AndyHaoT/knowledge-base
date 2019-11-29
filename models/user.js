@@ -1,42 +1,40 @@
 const db = require('../util/database');
 
-function createUserTable() {
-    return db.execute("CREATE TABLE IF NOT EXISTS `knowledge_base`.`user` ("
-        + "`id` INT NOT NULL AUTO_INCREMENT,"
-        + "`email` VARCHAR(45) NOT NULL,"
-        + "`firstname` VARCHAR(45) NOT NULL,"
-        + "`lastname` VARCHAR(45) NOT NULL,"
-        + "`password` VARCHAR(45) NOT NULL,"
-        + "`bio` VARCHAR(45) NULL,"
-        + "`country` VARCHAR(45) NULL,"
-        + "`dob` VARCHAR(45) NULL,"
-        + "`likes` INT NOT NULL DEFAULT 0,"
-        + "PRIMARY KEY (`id`),"
-        + "UNIQUE INDEX `id_UNIQUE` (`id` ASC),"
-        + "UNIQUE INDEX `email_UNIQUE` (`email` ASC));");
-}
-
-function findUserEmail(email) {
-    return db.execute("SELECT `id` FROM `user` WHERE `email` = '" + email + "'");
+function getUserIdFromEmail(email) {
+    return db.query("SELECT `user_id` FROM `user` WHERE `user_email` = ?", [email]);
 }
 
 function getUserId(email, password) {
-    return db.execute("SELECT `id` FROM `user` WHERE `email` = '" + email + "' AND password='" + password + "'");
+    return db.query("SELECT `user_id` FROM `user_auth` WHERE `auth_key`=? AND `auth_token`=?", [email, password]);
 }
 
-function addUser(email, firstname, lastname, password, bio='', country='', dob='') {
-    return db.execute("INSERT INTO `user` (`email`, `firstname`, `lastname`, `password`, `bio`, `country`, `dob`) VALUES('" 
-    + email + "', '" + firstname + "', '" + lastname + "', '" + password + "', '" + bio + "', '" + country + "', '" + dob + "')");
+function addUser(email, firstname, lastname, password) {
+    return db.query("INSERT INTO `user` (`user_name`, `user_email`, `account_status`) VALUES(?, ?, 'ACTIVE')", [email, email])
+        .then(function() {
+            db.query("SELECT `user_id` FROM `user` WHERE `user_name` = ?", [email])
+                .then(([data, metadata]) => {
+                    db.query("INSERT INTO `user_auth` (`user_id`, `auth_type`, `auth_key`, `auth_token`) VALUES(?, 'password', ?, ?)", [data[0].user_id, email, password])
+                        .then(function() {
+                            return db.query("INSERT INTO `user_biography` (`user_id`, `user_firstname`, `user_lastname`) VALUES(?, ?, ?)", 
+                                [data[0].user_id, firstname, lastname])
+                        });
+                });
+        });
+}
+
+function updateUser(user_id, imgUrl, bio, country, birthday) {
+    return db.query("UPDATE `user_biography` SET `user_avatar_path`=?, `user_country_code`=?, `user_birthday`=?, `user_bio`=? WHERE `user_id`=?",
+        [imgUrl, country, birthday, bio, user_id]);
 }
 
 function delUser(email) {
-    return db.execute("DELETE FROM `user` WHERE `email` = '" + email + "'");
+    return db.query("DELETE FROM `user` WHERE `user_email` = ?", [email]);
 }
 
 module.exports = {
-    createUserTable: createUserTable,
-    findUserEmail: findUserEmail,
+    getUserIdFromEmail: getUserIdFromEmail,
     getUserId: getUserId,
     addUser: addUser,
+    updateUser: updateUser,
     delUser: delUser
 }

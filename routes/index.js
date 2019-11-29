@@ -12,4 +12,6 @@ router.get('/logout', LoginController.logout_get);
 
 router.post('/signup', LoginController.signup_post);
 
+router.post('/profile/update', LoginController.profile_update_post);
+
 module.exports = router;

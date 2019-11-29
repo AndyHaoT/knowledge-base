@@ -19,32 +19,28 @@
     <% } %>
     <div class="container">
         <div id="signup-cover-area">
-            <img id="login-logo" src='/img/kb-logo-full.png'>
+            <img id="signup-logo" src='/img/kb-logo-full.png'>
             <h1>
                 <%= signupMsg %>
             </h1>
         </div>
         <div id="signup-more-info-area">
             <div id="signup-more-info-form">
-                <form>
-                    <input type="text" name="firstname" placeholder="firstname" maxlength="20" required
-                        pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
-                        onfocus="HideError()">
-                    <input type="text" name="lastname" placeholder="lastname" maxlength="20" required
-                        pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
-                        onfocus="HideError()">
+                <form id="profile-update-form" action="/profile/update" method="POST">
+                    <input type="text" name="imgUrl" placeholder="imageurl" required onfocus="HideError()">
                     <br>
-                    <input type="email" name="email" placeholder="email" required onfocus="HideError()">
+                    <textarea rows="4" cols="50" name="bio" placeholder="a few lines about yourself ..." form="profile-update-form"
+                    onfocus="HideError()"></textarea>
                     <br>
-                    <input type="password" name="password" placeholder="password" maxlength="20" required
-                        pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
+                    <input type="text" name="country" placeholder="country" maxlength="20" required
+                        pattern="^[a-zA-Z ]*$" title="Only letters are allowed"
                         onfocus="HideError()">
                     <br>
-                    <input type="password" name="comfirm-pw" placeholder="confirm password" maxlength="20" required
-                        pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
+                    <input type="date" name="dob" placeholder="date of birth (mm/dd/yyyy)" maxlength="20" required
+                        pattern="^[0-9/ ]*$" title="Only numbers and '/' are allowed"
                         onfocus="HideError()">
                     <br>
-                    <input id="signup-more-info-btn" type="submit" value="signup">
+                    <input id="signup-more-info-btn" type="submit" value="complete registration">
                 </form>
             </div>
         </div>

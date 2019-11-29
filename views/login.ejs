@@ -44,13 +44,9 @@
                     <br>
                     <input type="email" name="email" placeholder="email" required onfocus="HideError()">
                     <br>
-                    <input type="password" name="password" placeholder="password" maxlength="20" required
-                        pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
-                        onfocus="HideError()">
+                    <input id="signup-pw" type="password" name="password" placeholder="password" maxlength="20" required onfocus="HideError()" onchange="ConfirmPw()">
                     <br>
-                    <input type="password" name="comfirm-pw" placeholder="confirm password" maxlength="20" required
-                        pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
-                        onfocus="HideError()">
+                    <input id="signup-confirm-pw" type="password" name="comfirm-pw" placeholder="confirm password" maxlength="20" required onfocus="HideError()" onkeyup="ConfirmPw()">
                     <br>
                     <input id="signup-btn" type="submit" value="signup">
                 </form>
