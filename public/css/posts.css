@@ -1,6 +1,5 @@
-
-post_container {
-    width:60%;
+body {
+    padding-top: 10px;
 }
 
 .full_post {
@@ -25,50 +24,14 @@ post_container {
     float: right;
 }
 
-.post > div {
-    height: 100%;
-}
-
-.posts_content {
-    width: 100%;
-    height: 100%;
-}
-
-.post_details {
-    float: left;
-    width: 75%;
-    height: 100%;
-}
-
 .post_img {
     border-radius: 50%;
     height: 175px;
     width: 175px;
 }
 
-.post_header {
-    height: 20%;
-}
-
-.post_middle {
-    height: 100px;
-    overflow: hidden;
-}
-
-.post_footer {
-    height: 20%;
-}
-
-.float_left {
-    text-align: left;
-}
-
-.float_right {
-    text-align: right;
-}
-
 .topic {
-    text-align: right;
+    width: 50%;
     border-style: solid;
     border-color: blue;
     color: blue;
@@ -103,3 +66,55 @@ form .submit:hover {
     background: lightgray;
 }
 
+.post2 {
+    height: 200px;
+    width: 98%;
+    min-width: 600px;
+    margin-bottom: 10px;
+    color: rgb(90, 90, 90);
+}
+
+.img {
+    float: left;
+    text-align: center;
+    height: 100%;
+    width: 20%;
+}
+
+.content {
+    float: left;
+    height: 100%;
+    width: 80%;
+}
+
+.top {
+    height: 20%;
+}
+
+.rows > div {
+    float: left;
+    width: 50%;
+}
+
+.left {
+    float: left;
+    width: 80%;
+}
+
+.rep {
+    text-align: right;
+}
+
+.middle {
+    height: 50%;
+}
+
+.bottom {
+    height: 20%;
+}
+
+.right {
+    float: left;
+    width: 20%;
+    text-align: center;
+}
