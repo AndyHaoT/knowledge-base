@@ -100,3 +100,7 @@ form .submit:hover {
     width: 20%;
     text-align: center;
 }
+
+.top > a {
+    color: rgb(90, 90, 90);
+}
