@@ -3,7 +3,7 @@ const userModel = require('../models/user');
 const postModel = require('../models/post');
 const profileModel = require('../models/user_profile')
 const time = require('../public/js/dateconvert')
-
+const editProfileModel = require('../models/editProfile');
 const postController = require('../controllers/PostController')
 
 exports.root_get = function(req, res) {
@@ -37,14 +37,7 @@ exports.root_get = function(req, res) {
     //         console.log(error);
     //     })
 
-
-
-
-    postModel.getTopics()
-        .then(([data, metadata]) => {
-            console.log(data);
-            res.render('test', {topics: data});
-        })
+    res.redirect('/editProfile');
 }
 
 exports.login_get = function(req, res) {
