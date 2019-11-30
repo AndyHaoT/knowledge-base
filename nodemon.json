@@ -1,0 +1,5 @@
+{
+    "ext": "js,ejs",
+    "ignore": [],
+    "exec": "node app.js"
+  }

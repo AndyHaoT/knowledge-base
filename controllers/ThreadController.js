@@ -1,7 +1,7 @@
 const msgModel = require('../models/mod_message.js');
 
 exports.newThread = (req, res) => {
-    res.render('thread', {receiver_id: req.params.receiver_id,messageCSS:true, pageTitle:"thread page"})
+    res.render('thread', {receiver_id: req.params.receiver_id})
 }
 
 exports.createThread = (req, res) => {
