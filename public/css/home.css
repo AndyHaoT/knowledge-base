@@ -1,0 +1,20 @@
+.sidebarProfile {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-left: 25px;
+    width: 225px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    
+}
+
+.sidebarParagraphs{
+    display: inline-block;
+}
+
+.sidebarProfile img {
+    border-radius: 50%;
+}
+
+.sidebarProfile p,a {
+    font-size: 1.05em;
+}

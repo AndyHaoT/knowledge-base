@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/searchbar.css" type="text/css">
+    <link rel="stylesheet" href="/css/home.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Home</title>
+</head>
+<body>
+    <%- include('partials/searchbar') %>
+    <div class="sidebarProfile">
+        <img src="<%= data.imageURL %>" alt="" id="profileImage">
+        <h2><%= data.firstname%> + <%= data.lastname%></h2>
+        <p><%= data.bio %></p>
+        <table>
+            <tr>
+                <td><a href="/getPosts">Posts</a></td>
+                <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= data.postCount></p></td>
+            </tr>
+            <tr>
+                <td> <a href="/getMessages">Messages</a></td>
+                <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= data.messageCount %></p></td>
+            </tr>
+            <tr>
+                <td><p>Likes</p></td>
+                <td><p>&nbsp; &nbsp; <%= data.likes %></p></td>
+            </tr>
+        </table>
+        <br>
+        <a href="/editProfile">Edit Profile</a>
+    </div>
+</body>
+</html>
