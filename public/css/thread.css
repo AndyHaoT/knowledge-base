@@ -1,0 +1,59 @@
+.search_part{
+    padding-top:30px;
+    padding-bottom: 120px;
+}
+.search_part button{
+    float: right;
+    height:30px;
+    width: 70px;
+    margin-right: 5%;
+    background-color: rgb(36, 114, 216);
+    border-style: none;
+}
+.search_part input{
+    height:30px;
+    width: 30%;
+    background-color: lightgray;
+}
+.message_photo{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+.message_photo img{
+    height:100px;
+    width:100px;
+    border-radius: 50%;
+    vertical-align: top;
+}
+.message_part{
+    display: inline-block;
+    margin-left:30px;
+    text-align: left;
+}
+.message_part input:first-child{
+    display: block;
+    height:40px;
+    font-size:20px;
+    width:250px;
+    border-color: black;
+    border-width: 1px;
+    margin-bottom: 40px;
+    font-style: italic;
+    padding-left:8px;
+}
+.message_part textarea{
+    display: block;
+    height:200px;
+    width:500px;
+    font-size:20px;
+    font-style: italic;
+    padding-left:8px;
+    margin-bottom: 40px;
+}
+.message_part input[type=submit]{
+    background-color:  rgb(36, 114, 216);
+    padding: 13px 42px;
+    font-size:15px;
+    border-style: none;
+}
