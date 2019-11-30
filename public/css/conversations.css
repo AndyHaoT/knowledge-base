@@ -29,7 +29,7 @@ body{
     padding-top: 7%;
     padding-left:3%;
     flex-wrap: wrap;
-    height:15%;
+    height:100px;
 }
 .user:active{
     outline: none;
@@ -40,7 +40,7 @@ body{
     padding-top: 7%;
     padding-left:3%;
     flex-wrap: wrap;
-    height:15%;
+    height:100px;
     background: lightgrey;
     outline: none;
 }
