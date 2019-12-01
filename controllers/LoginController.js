@@ -6,7 +6,17 @@ exports.root_get = function (req, res) {
     sessionModel.getUser(req.sessionID)
         .then(([data, metadata]) => {
             if (data.length != 0) {
-                res.redirect('/editProfile');
+                userModel.getUserProfile(data[0].data)
+                    .then(([userData, userMetadata]) => {
+                        res.render('home', {
+                            firstname: userData[0].user_firstname,
+                            lastname: userData[0].user_lastname,
+                            bio: userData[0].user_bio,
+                            postCount: 999,
+                            messageCount: 999,
+                            likes: 999
+                        });
+                    });
             } else {
                 res.redirect('/login');
             }

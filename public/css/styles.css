@@ -219,7 +219,8 @@ body {
 }
 
 #signup-more-info-form form textarea,
-#signup-more-info-form form input {
+#signup-more-info-form form input,
+#profile-update-form #country {
     font-family: 'Cambay', 'sans-serif';
     font-size: 1.8em;
     width: 70%;
