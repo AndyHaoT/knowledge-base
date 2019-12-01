@@ -32,9 +32,7 @@
                     <textarea rows="4" cols="50" name="bio" placeholder="a few lines about yourself ..." form="profile-update-form"
                     onfocus="HideError()"></textarea>
                     <br>
-                    <input type="text" name="country" placeholder="country" maxlength="20" required
-                        pattern="^[a-zA-Z ]*$" title="Only letters are allowed"
-                        onfocus="HideError()">
+                    <%- include('partials/countryList') %>
                     <br>
                     <input type="date" name="dob" placeholder="date of birth (mm/dd/yyyy)" maxlength="20" required
                         pattern="^[0-9/ ]*$" title="Only numbers and '/' are allowed"

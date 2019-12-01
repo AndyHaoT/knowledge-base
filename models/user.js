@@ -23,7 +23,7 @@ function addUser(email, firstname, lastname, password) {
 }
 
 function updateUser(user_id, imgUrl, bio, country, birthday) {
-    return db.query("UPDATE `user_biography` SET `user_avatar_path`=?, `user_country_code`=?, `user_birthday`=?, `user_bio`=? WHERE `user_id`=?",
+    return db.query("UPDATE `user_biography` SET `user_avatar_path`=?, `user_country`=?, `user_birthday`=?, `user_bio`=? WHERE `user_id`=?",
         [imgUrl, country, birthday, bio, user_id]);
 }
 
@@ -31,10 +31,15 @@ function delUser(email) {
     return db.query("DELETE FROM `user` WHERE `user_email` = ?", [email]);
 }
 
+function getUserProfile(user_id) {
+    return db.query("SELECT * FROM `user_biography` WHERE `user_id`=?", [user_id]);
+}
+
 module.exports = {
     getUserIdFromEmail: getUserIdFromEmail,
     getUserId: getUserId,
     addUser: addUser,
     updateUser: updateUser,
-    delUser: delUser
+    delUser: delUser,
+    getUserProfile: getUserProfile
 }

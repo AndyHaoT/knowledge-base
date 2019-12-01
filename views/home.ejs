@@ -13,12 +13,12 @@
     <%- include('partials/searchbar') %>
     <div class="sidebarProfile">
         <img src="<%= data.imageURL %>" alt="" id="profileImage">
-        <h2><%= data.firstname%> + &nbsp; <%= data.lastname%></h2>
+        <h2><%= data.firstname%> + &nbsp; <%= data.lastname %></h2>
         <p><%= data.bio %></p>
         <table>
             <tr>
                 <td><a href="/getPosts">Posts</a></td>
-                <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= data.postCount></p></td>
+                <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= data.postCount %></p></td>
             </tr>
             <tr>
                 <td> <a href="/getMessages">Messages</a></td>
