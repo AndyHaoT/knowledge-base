@@ -49,4 +49,8 @@ router.post('/conversation/:thread_id/post/:receiver_id/message/:message', Conve
 
 router.get('/home', HomePageController.getHomePage);
 
+router.get('/home/getPosts', HomePageController.getUserPosts);
+
+router.get('/home/:offset', HomePageController.getNextPosts);
+
 module.exports = router;

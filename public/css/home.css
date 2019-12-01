@@ -18,3 +18,15 @@
 .sidebarProfile p,a {
     font-size: 1.05em;
 }
+
+.content_container {
+    height: 100%;
+    width: 60%;
+    float: right;
+    margin-right: 50px;
+}
+
+.next {
+    background: blue;
+    width: 50px;
+}

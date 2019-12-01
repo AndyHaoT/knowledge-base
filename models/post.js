@@ -20,7 +20,6 @@ params
     offset: will query the next 'number' of rows from the offset
 */
 function getPosts(number, offset, user_id) {
-    console.log(user_id)
     let query = "SELECT P.POST_ID, P.POST_SUBJECT, P.POST_CONTENT, P.DATE_CREATED, U.USER_ID, U.USER_AVATAR_PATH, PT.POST_TOPIC_TEXT, COUNT(PC.POST_COMMENT_ID) AS REPLY_COUNT"
         + " FROM KNOWLEDGE_BASE.POST P"
         + " JOIN KNOWLEDGE_BASE.USER_BIOGRAPHY U ON U.USER_ID = P.USER_ID"
@@ -31,31 +30,10 @@ function getPosts(number, offset, user_id) {
 
     query += " GROUP BY P.POST_ID" + " ORDER BY DATE_CREATED DESC";
 
-    number > 0 && offset >= 0 ? query += "LIMIT " + offset + "," + number : '';
+    number > 0 && offset >= 0 ? query += " LIMIT " + offset + "," + number : '';
 
     return db.query(query);
 }
-
-/*
-Gets posts for the logged in user
-Params
-    user_id: The id of the current user
-    number: The number of posts to return ordered by recent posts
-    - If null, will return all posts ordered by recent posts 
-*/
-// function getUserPosts(user_id, number) {
-//     let query = "SELECT P.POST_ID, P.POST_SUBJECT, P.POST_CONTENT, P.DATE_CREATED, U.USER_AVATAR_PATH, PT.POST_TOPIC_TEXT, COUNT(PC.POST_COMMENT_ID) AS REPLY_COUNT"
-//         + " FROM KNOWLEDGE_BASE.POST P"
-//         + " JOIN KNOWLEDGE_BASE.USER_BIOGRAPHY U ON U.USER_ID = P.USER_ID"
-//         + " JOIN KNOWLEDGE_BASE.POST_TOPIC PT ON PT.POST_TOPIC_CODE = P.POST_TOPIC_CODE"
-//         + " LEFT JOIN KNOWLEDGE_BASE.POST_COMMENT PC ON PC.POST_ID = P.POST_ID"
-//         + " WHERE P.USER_ID = " + user_id
-//         + " GROUP BY P.POST_ID"
-//         + " ORDER BY DATE_CREATED DESC";
-//     number > 0 ? query += "LIMIT " + number: '';
-
-//     return db.query(query);
-// }
 
 /*
 Adds a post

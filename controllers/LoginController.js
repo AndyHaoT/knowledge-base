@@ -1,22 +1,13 @@
 const sessionModel = require('../models/session');
 const userModel = require('../models/user');
 const strVal = require('../values/string');
+const profileModel = require('../models/editProfile');
 
 exports.root_get = function (req, res) {
     sessionModel.getUser(req.sessionID)
         .then(([data, metadata]) => {
             if (data.length != 0) {
-                userModel.getUserProfile(data[0].data)
-                    .then(([userData, userMetadata]) => {
-                        res.render('home', {
-                            firstname: userData[0].user_firstname,
-                            lastname: userData[0].user_lastname,
-                            bio: userData[0].user_bio,
-                            postCount: 999,
-                            messageCount: 999,
-                            likes: 999
-                        });
-                    });
+                res.redirect('/home');
             } else {
                 res.redirect('/login');
             }
