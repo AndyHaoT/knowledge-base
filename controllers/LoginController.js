@@ -6,7 +6,7 @@ exports.root_get = function (req, res) {
     sessionModel.getUser(req.sessionID)
         .then(([data, metadata]) => {
             if (data.length != 0) {
-                res.render('index');
+                res.redirect('/editProfile');
             } else {
                 res.redirect('/login');
             }

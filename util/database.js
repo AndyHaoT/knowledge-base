@@ -8,8 +8,6 @@ const SCIRPT_RGX = /^(\d+)-.+?\.sql$/;
 
 class MySQLUtil {
 
-    
-
     constructor(config) {
         this.config = config;
         this.pool = this.createPool();

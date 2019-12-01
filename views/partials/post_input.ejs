@@ -1,0 +1,15 @@
+<h1 id="post_title">What was your question today?</h1>
+<form class="post_input" method="POST" action="/post/add">
+
+    <input class="input_items" name="subject" placeholder="Subject" type="text" required><br>
+
+    <textarea class="input_items" name="content" placeholder="Question" rows="5" required></textarea><br>
+
+    <select class="input_items" name="topic" required>
+        <% topics.forEach(function(topic) { %>
+            <option value="<%=topic.POST_TOPIC_CODE%>"><%=topic.POST_TOPIC_TEXT%></option>
+        <% }); %>
+    </select><br>
+
+    <input class="input_items submit" type="submit" value="Post to Timeline"> 
+</form>
