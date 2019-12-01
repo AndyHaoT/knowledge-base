@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Knowledge Base | Signup</title>
+    <meta name="description" content="Knowledge Base | Signup">
+    <meta name="author" content="Hao Tang">
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Cambay&display=swap" rel="stylesheet">
+    <script src="/js/script.js" defer></script>
+</head>
+
+<body>
+    <% if (error_msg != '') {%>
+    <%- include('partials/error', {msg: error_msg}); %>
+    <% } %>
+    <div class="container">
+        <div id="signup-cover-area">
+            <img id="signup-logo" src='/img/kb-logo-full.png'>
+            <h1>
+                <%= signupMsg %>
+            </h1>
+        </div>
+        <div id="signup-more-info-area">
+            <div id="signup-more-info-form">
+                <form id="profile-update-form" action="/profile/update" method="POST">
+                    <input type="text" name="imgUrl" placeholder="imageurl" required onfocus="HideError()">
+                    <br>
+                    <textarea rows="4" cols="50" name="bio" placeholder="a few lines about yourself ..." form="profile-update-form"
+                    onfocus="HideError()"></textarea>
+                    <br>
+                    <input type="text" name="country" placeholder="country" maxlength="20" required
+                        pattern="^[a-zA-Z ]*$" title="Only letters are allowed"
+                        onfocus="HideError()">
+                    <br>
+                    <input type="date" name="dob" placeholder="date of birth (mm/dd/yyyy)" maxlength="20" required
+                        pattern="^[0-9/ ]*$" title="Only numbers and '/' are allowed"
+                        onfocus="HideError()">
+                    <br>
+                    <input id="signup-more-info-btn" type="submit" value="complete registration">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

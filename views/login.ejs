@@ -9,6 +9,7 @@
     <meta name="author" content="Hao Tang">
 
     <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Cambay&display=swap" rel="stylesheet">
     <script src="/js/script.js" defer></script>
 </head>
 
@@ -17,27 +18,39 @@
     <%- include('partials/error', {msg: error_msg}); %>
     <% } %>
     <div class="container">
-        <div class="login-box">
-            <h3>&nbsp;Member Login</h3>
-            <form action="/login" method="POST">
-                <div id="login-form">
-                    <div id="username-input-field">
-                        <img src="/img/user.png">
-                        <input type="text" name="username" placeholder="username" maxlength="20" required
-                            pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
-                            onfocus="HideError()">
-                    </div>
-                    <div id="password-input-field">
-                        <img src="/img/password.png">
-                        <input type="password" name="password" placeholder="password" maxlength="20" required
-                            pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
-                            onfocus="HideError()">
-                    </div>
-
-                </div>
-                <br>
-                <input id="login-btn" type="submit" value="Login">
+        <div id="cover-area">
+            <img id="login-logo" src='/img/kb-logo-full.png'>
+            <img id="cover-img" src='/img/login-cover.jpg'>
+        </div>
+        <div id="login-area">
+            <form id="login-form" action="/login" method="POST">
+                <input type="email" name="email" placeholder="email" required onfocus="HideError()">
+                <input type="password" name="password" placeholder="password" maxlength="20" required
+                    pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
+                    onfocus="HideError()">
+                <input id="login-btn" type="submit" value="login">
             </form>
+            <div id="signup-form">
+                <h1>
+                    <%= slogan %>
+                </h1>
+                <form action="/signup" method="POST">
+                    <input type="text" name="firstname" placeholder="firstname" maxlength="20" required
+                        pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
+                        onfocus="HideError()">
+                    <input type="text" name="lastname" placeholder="lastname" maxlength="20" required
+                        pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers are allowed at the moment"
+                        onfocus="HideError()">
+                    <br>
+                    <input type="email" name="email" placeholder="email" required onfocus="HideError()">
+                    <br>
+                    <input id="signup-pw" type="password" name="password" placeholder="password" maxlength="20" required onfocus="HideError()" onchange="ConfirmPw()">
+                    <br>
+                    <input id="signup-confirm-pw" type="password" name="comfirm-pw" placeholder="confirm password" maxlength="20" required onfocus="HideError()" onkeyup="ConfirmPw()">
+                    <br>
+                    <input id="signup-btn" type="submit" value="signup">
+                </form>
+            </div>
         </div>
     </div>
 </body>

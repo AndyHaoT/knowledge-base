@@ -17,6 +17,10 @@ router.post('/login', LoginController.login_post);
 
 router.get('/logout', LoginController.logout_get);
 
+router.post('/signup', LoginController.signup_post);
+
+router.post('/profile/update', LoginController.profile_update_post);
+
 router.get('/editProfile', EditProfileController.getProfiletoEdit);
 
 router.post('/updateProfile', EditProfileController.updateProfile);
@@ -44,6 +48,5 @@ router.get('/conversation/:thread_id', ConversationController.getConversation);
 router.post('/conversation/:thread_id/post/:receiver_id/message/:message', ConversationController.writeMessage);
 
 router.get('/home', HomePageController.getHomePage);
-
 
 module.exports = router;
