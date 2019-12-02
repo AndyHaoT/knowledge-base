@@ -18,13 +18,13 @@
         <img src="<%= sidebar.USER_AVATAR_PATH %>" alt="" id="profileImage">
         <h2><%= sidebar.USER_FIRSTNAME%>&nbsp;<%= sidebar.USER_LASTNAME%></h2>
         <p><%= sidebar.USER_BIO %></p>
-        <table>
+        <table class="sideBarTable">
             <tr>
                 <td><a href="/home/getPosts">Posts</a></td>
                 <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= sidebar.POSTS %></p></td>
             </tr>
             <tr>
-                <td> <a href="/getMessages">Messages</a></td>
+                <td> <a href="/conversation">Messages</a></td>
                 <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= sidebar.MESSAGES %></p></td>
             </tr>
             <tr>

@@ -27,6 +27,7 @@ const time = require('../public/js/dateconvert');
 
 
 exports.getHomePage = function(req, res) {
+    console.log("sessionid ", req.sessionID);
     sessionModel.getUser(req.sessionID)
     .then(([data, metadata]) => {
         user_id = data[0].data;
@@ -34,10 +35,9 @@ exports.getHomePage = function(req, res) {
         {
             profileModel.getUserSessionData(user_id)
             .then(([data, metadata]) => {
-                postNum = 5
+                postNum = 5;
                 postModel.getPosts(postNum,0,-1)
                 .then(([posts, metadata]) => {
-                    console.log(data[0])
                     for (let i = 0; i < posts.length; i++)
                         posts[i].DATE_CREATED = time.convertTimestamp(posts[i].DATE_CREATED);
 
@@ -62,12 +62,10 @@ exports.getNextPosts = function(req,res) {
         {
             profileModel.getUserSessionData(user_id)
             .then(([data, metadata]) => {
-                postNum = 5
-                offset = req.params.offset
+                postNum = 5;
+                offset = req.params.offset;
                 postModel.getPosts(postNum, offset, -1)
                 .then(([posts, metadata]) => {
-                    console.log(data)
-
                     for (let i = 0; i < posts.length; i++)
                         posts[i].DATE_CREATED = time.convertTimestamp(posts[i].DATE_CREATED);
 
@@ -93,8 +91,6 @@ exports.getUserPosts = function(req, res) {
             .then(([data, metadata]) => {
                 postModel.getPosts(-1,0,user_id)
                 .then(([posts, metadata]) => {
-                    console.log(data)
-
                     for (let i = 0; i < posts.length; i++)
                         posts[i].DATE_CREATED = time.convertTimestamp(posts[i].DATE_CREATED);
 
@@ -104,4 +100,5 @@ exports.getUserPosts = function(req, res) {
         }
     })
 }
+
 

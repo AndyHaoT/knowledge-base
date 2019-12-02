@@ -11,6 +11,8 @@ body {
 
 .post_img {
     border-radius: 50%;
+    max-width: 150px;
+    height: auto;
 }
 
 .topic {

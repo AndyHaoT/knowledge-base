@@ -1,9 +1,12 @@
 const editProfileModel = require('../models/editProfile');
+const sessionModel = require('../models/session');
 
 // Must pass the user ID somehow when calling this function
 exports.getProfiletoEdit = function (req, res) {
-    let id = req.body.id;
-    editProfileModel.getProfiletoEdit(123)
+    sessionModel.getUser(req.sessionID)
+    .then(([data, metadata]) => {
+        user_id = data[0].data;
+        editProfileModel.getProfiletoEdit(user_id)
         .then(([data, metadata]) => {
             res.render('editprofile', {
                 data: {
@@ -16,21 +19,30 @@ exports.getProfiletoEdit = function (req, res) {
                 }
             });
         });
+    });
 }
 
 // Must pass the user ID somehow when calling this function
 exports.updateProfile = function (req, res) {
-    console.log(req.body.imageURL);
-    let id = req.body.id;
-    let data = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        imageUrl: req.body.imageURL,
-        country: req.body.country,
-        dateOfBirth: req.body.dateOfBirth,
-        about: req.body.about
-    };
+    
+    sessionModel.getUser(req.sessionID)
+    .then(([data, metadata]) => {
+        user_id = data[0].data;
+        let send_data = {
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            imageUrl: req.body.imageURL,
+            country: req.body.country,
+            dateOfBirth: req.body.dateOfBirth,
+            about: req.body.about
+        };
+    
+        editProfileModel.updateProfile(user_id, send_data)
+        .then(([data, metadata]) => {
+            res.redirect('/home');
+        });
+    });
 
-    editProfileModel.updateProfile(123, data);
-    res.redirect('/home');
+    
+    
 }
