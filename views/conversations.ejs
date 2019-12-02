@@ -21,7 +21,7 @@
                 <% for(var i=0; i<allthreads.length; i++) {%>
                 <div tabindex ="-1" class= "user" onclick="getMessagesFromThread(this,<%=allthreads[i].thread_id%>,<%=allthreads[i].user_id%>)">
                     <div class = "photo">
-                        <img src="/test.jpg" alt="profile image">
+                        <img src="<%=allthreads[i].user_avatar_path%>" alt="profile image">
                     </div>
                     <div class="user_info">
                         <p><%=allthreads[i].user_name%></p>

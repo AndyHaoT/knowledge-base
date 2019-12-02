@@ -53,7 +53,7 @@ function getMessagesFromThread(thisObj, thread_id, message_user) {
                 msgDiv.classList.add('content_photo')
                 // img tag
                 msgImg = document.createElement('img')
-                msgImg.src = "/test.jpg"
+                msgImg.src = m.user_avatar_path
                 msgImg.alt = "profile image"
                 msgDiv.appendChild(msgImg)
                 // div tag for msg
@@ -94,8 +94,6 @@ function addMessage(thread_id, message_user) {
             let allDates = document.querySelectorAll('.message_list p span')
             let lastDate = allDates[allDates.length-1].textContent
             let msgP,msgSpan,msgDiv,msgImg,msgInnerDiv,msgInnerSpan,msgInnerSpan2,msgInnerP
-            console.log(oneMsg.date)
-            console.log(oneMsg.date)
             if (oneMsg.date != lastDate) {
                 lastDate = oneMsg.date
                 msgP = document.createElement('p')
@@ -109,7 +107,7 @@ function addMessage(thread_id, message_user) {
             msgDiv.classList.add('content_photo')
             // img tag
             msgImg = document.createElement('img')
-            msgImg.src = "/test.jpg"
+            msgImg.src = oneMsg.user_avatar_path
             msgImg.alt = "profile image"
             msgDiv.appendChild(msgImg)
             // div tag for msg
@@ -137,6 +135,7 @@ function addMessage(thread_id, message_user) {
         }
     };
     let message = document.querySelector('textarea[name=message').value
+    message = message.replace(/\n\r?/g, '<br />');
     xhttp.open("POST", "/conversation/"+thread_id+"/post/"+message_user+"/message/"+message, true);
     xhttp.send();
 }

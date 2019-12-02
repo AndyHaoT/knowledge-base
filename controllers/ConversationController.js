@@ -5,7 +5,8 @@ exports.getConversations = (req, res) => {
     sessionModel.getUser(req.sessionID)
         .then(([data, metadata]) => {
             if (data.length > 0) {
-                const self_id = 1;
+                // const self_id = 1;
+                const self_id = data[0].data;
                 // TODO: what if the last thread is not made by myself?
                 msgModel.getThreads(self_id).then(([allthreads, metadata]) => {
                     if (allthreads.length == 0) {
@@ -17,21 +18,22 @@ exports.getConversations = (req, res) => {
                             conversationsCSS: true,
                             conversationsJS: true
                         });
-                    }
-                    msgModel.getMessages(allthreads[0].thread_id).then(([allmessages, metadata]) => {
-                        if (allmessages[0].user_sender_id == self_id)
-                            message_user = allmessages[0].user_receiver_id;
-                        else
-                            message_user = allmessages[0].user_sender_id;
-                        res.render('conversations', {
-                            allthreads,
-                            // allmessages,
-                            message_user,
-                            thread_id: allthreads[0].thread_id,
-                            conversationsCSS: true,
-                            conversationsJS: true
+                    } else {
+                        msgModel.getMessages(allthreads[0].thread_id).then(([allmessages, metadata]) => {
+                            if (allmessages[0].user_sender_id == self_id)
+                                message_user = allmessages[0].user_receiver_id;
+                            else
+                                message_user = allmessages[0].user_sender_id;
+                            res.render('conversations', {
+                                allthreads,
+                                // allmessages,
+                                message_user,
+                                thread_id: allthreads[0].thread_id,
+                                conversationsCSS: true,
+                                conversationsJS: true
+                            });
                         });
-                    });
+                    }
                 });
             }
             else {
@@ -44,7 +46,8 @@ exports.getConversation = (req, res) => {
     sessionModel.getUser(req.sessionID)
         .then(([data, metadata]) => {
             if (data.length > 0) {
-                const self_id = 1;
+                // const self_id = 1;
+                const self_id = data[0].data;
                 // TODO: what if the last thread is not made by myself?
                 // msgModel.getThreads(self_id).then(([allthreads, metadata]) => {
                 msgModel.getMessages(req.params.thread_id).then(([allmessages, metadata]) => {
@@ -74,9 +77,10 @@ exports.getConversation = (req, res) => {
 
 exports.writeMessage = (req, res) => {
     sessionModel.getUser(req.sessionID)
-        .then(([data, metadata]) => {
-            if (data.length > 0) {
-                const self_id = 1;
+        .then(([rows, metadata]) => {
+            if (rows.length > 0) {
+                // const self_id = 1;
+                const self_id = rows[0].data;
                 let data = {
                     thread_id: req.params.thread_id,
                     message: req.params.message,
