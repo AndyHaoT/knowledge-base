@@ -57,7 +57,6 @@ function getTopics() {
 module.exports = {
     getPost: getPost,
     getPosts: getPosts,
-    //getUserPosts: getUserPosts,
     add: addPost,
     getTopics: getTopics,
 }
