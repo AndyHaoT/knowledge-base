@@ -3,6 +3,7 @@
     <%- include('posts_container', {posts: posts}); %>
 <% } else { %>
     <%- include('post_input_container', {topics: topics}); %>
+    <%- include('searchbytopic', {topics: topics}); %>
     <h4>Latest Discussions</h4>
     <%- include('posts_container', {posts: posts}); %>
     <a href="/home/<%= offset %>">Next</a>

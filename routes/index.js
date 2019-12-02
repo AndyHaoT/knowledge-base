@@ -27,6 +27,8 @@ router.post('/updateProfile', EditProfileController.updateProfile);
 
 router.get('/search', SearchController.getSearchResults);
 
+router.get('/searchByTopic', SearchController.getTopicResults);
+
 router.get('/post/:post_id', PostController.getFullPost);
 
 router.post('/post/add', PostController.addPost);
