@@ -79,7 +79,7 @@ function getMessagesFromThread(thisObj, thread_id, message_user) {
             })
             let element = document.querySelector(".message_list");
             element.scrollTop = element.scrollHeight;
-
+            sendMessage();
         }
     };
     xhttp.open("GET", "/conversation/"+thread_id, true);
@@ -134,6 +134,7 @@ function addMessage(thread_id, message_user) {
             let element = document.querySelector(".message_list");
             element.scrollTop = element.scrollHeight;
             document.querySelector('textarea[name=message').value = "";
+            sendMessage();
         }
     };
     let message = document.querySelector('textarea[name=message').value
