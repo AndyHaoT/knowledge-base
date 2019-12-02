@@ -9,12 +9,7 @@ const ThreadController = require('../controllers/ThreadController');
 const ConversationController = require('../controllers/ConversationController');
 const router = express.Router();
 
-// router.get('/', LoginController.root_get);
-router.get('/', function (req,res) {
-    res.render('conversations', { pageTitle: 'Conversations Page' });
-    console.log(req.sessionID)
-    // res.render('message', { pageTitle: 'Message Page'});//
-  });
+router.get('/', LoginController.root_get);
 
 router.get('/login', LoginController.login_get);
 
