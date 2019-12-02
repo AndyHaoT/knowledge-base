@@ -52,8 +52,15 @@
     margin-bottom: 40px;
 }
 .message_part input[type=submit]{
-    background-color:  rgb(36, 114, 216);
+    background-color:  #008CBA;
+    color: white;
     padding: 13px 42px;
     font-size:15px;
     border-style: none;
+}
+.message_part input[type=submit]:disabled,
+.message_part input[type=submit][disabled]{
+  /* border: 1px solid #999999; */
+  background-color: rgb(88, 116, 131);
+  color: lightgrey;
 }
