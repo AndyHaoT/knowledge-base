@@ -47,7 +47,7 @@ router.get('/conversation', ConversationController.getConversations);
 
 router.get('/conversation/:thread_id', ConversationController.getConversation);
 
-router.post('/conversation/:thread_id/post/:receiver_id/message/:message', ConversationController.writeMessage);
+router.post('/conversation/:thread_id/post/:receiver_id', ConversationController.writeMessage);
 
 router.get('/home', HomePageController.getHomePage);
 

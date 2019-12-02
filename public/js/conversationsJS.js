@@ -1,7 +1,7 @@
 function sendMessage(){
     text_area = document.getElementsByTagName("textarea")[0]
     if(text_area.value.length > 0) { 
-        document.getElementById('msg_btn').disabled = false; 
+        document.getElementById('msg_btn').disabled = false;
     } else { 
         document.getElementById('msg_btn').disabled = true;
     }
@@ -70,6 +70,7 @@ function getMessagesFromThread(thisObj, thread_id, message_user) {
                 msgInnerDiv.append(msgInnerSpan2)
                 // p tag for content
                 msgInnerP = document.createElement('p')
+                msgInnerP.setAttribute('style', 'white-space: pre;');
                 msgInnerP.textContent = m.message_content
                 msgInnerDiv.appendChild(msgInnerP)
 
@@ -124,6 +125,7 @@ function addMessage(thread_id, message_user) {
             msgInnerDiv.append(msgInnerSpan2)
             // p tag for content
             msgInnerP = document.createElement('p')
+            msgInnerP.setAttribute('style', 'white-space: pre;');
             msgInnerP.textContent = oneMsg.message_content
             msgInnerDiv.appendChild(msgInnerP)
 
@@ -135,9 +137,9 @@ function addMessage(thread_id, message_user) {
         }
     };
     let message = document.querySelector('textarea[name=message').value
-    message = message.replace(/\n\r?/g, '<br />');
-    xhttp.open("POST", "/conversation/"+thread_id+"/post/"+message_user+"/message/"+message, true);
-    xhttp.send();
+    xhttp.open("POST", "/conversation/"+thread_id+"/post/"+message_user, true);
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp.send("message="+message);
 }
 
 let element = document.querySelector(".message_list");

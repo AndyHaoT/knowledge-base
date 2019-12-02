@@ -1,5 +1,8 @@
-body{
+html{
     height: 100%;
+}
+body{
+    height: 90%;
     font-family: Arial;
 }
 .search_part{
@@ -21,7 +24,7 @@ body{
 }
 .wrapper{
     display: flex;
-    height:70%;
+    height:100%;
 }
 .user{
     display: flex;
@@ -49,6 +52,7 @@ body{
     /* margin-left: 0; */
     justify-content: flex-start;
     border-right: 0.5px solid lightgrey;
+    overflow: auto;
     /* height: 600px; */
 }
 .user_list img{
@@ -142,7 +146,8 @@ body{
     padding-top: 2%;
 }
 #msg_btn{
-    background-color:  rgb(36, 114, 216);
+    background-color:  #008CBA;
+    color: white;
     padding: 13px 42px;
     font-size:15px;
     border-style: none;
@@ -153,6 +158,12 @@ body{
     border-radius: 10%;
     margin-top: 1%;
     margin-bottom: 1%;
+}
+#msg_btn:disabled,
+#msg_btn[disabled]{
+  /* border: 1px solid #999999; */
+  background-color: rgb(88, 116, 131);
+  color: lightgrey;
 }
 .container form{
     position: absolute;

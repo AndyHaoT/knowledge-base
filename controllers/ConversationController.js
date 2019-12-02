@@ -83,7 +83,7 @@ exports.writeMessage = (req, res) => {
                 const self_id = rows[0].data;
                 let data = {
                     thread_id: req.params.thread_id,
-                    message: req.params.message,
+                    message: req.body.message,
                     receiver_id: req.params.receiver_id,
                     sender_id: self_id
                 }
