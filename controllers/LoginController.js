@@ -47,9 +47,9 @@ exports.login_post = function (req, res) {
 
 exports.logout_get = function (req, res) {
     sessionModel.logoutUser(req.sessionID)
-    .then(([data, metadata]) => {
-        res.redirect('/login');
-    });
+        .then(([data, metadata]) => {
+            res.redirect('/login');
+        });
 }
 
 exports.signup_post = function (req, res) {
