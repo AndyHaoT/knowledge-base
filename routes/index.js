@@ -1,13 +1,10 @@
 const express = require('express');
 const LoginController = require('../controllers/LoginController');
-<<<<<<< HEAD
-=======
 const EditProfileController = require('../controllers/EditProfileController');
 const SearchController = require('../controllers/SearchController');
 const PostController = require('../controllers/PostController');
 const UserProfileController = require('../controllers/UserProfileController');
 const HomePageController = require('../controllers/HomePageController');
->>>>>>> dev
 const ThreadController = require('../controllers/ThreadController');
 const ConversationController = require('../controllers/ConversationController');
 const router = express.Router();
@@ -25,16 +22,6 @@ router.post('/login', LoginController.login_post);
 
 router.get('/logout', LoginController.logout_get);
 
-<<<<<<< HEAD
-router.get('/thread/:receiver_id', ThreadController.newThread); // Wait for User-Profile Click "Message" to pass in user id
-router.post('/thread/post/:receiver_id', ThreadController.createThread);
-
-router.get('/conversation', ConversationController.getConversations);
-router.get('/conversation/:thread_id', ConversationController.getConversation);
-router.post('/conversation/:thread_id/post/:receiver_id/message/:message', ConversationController.writeMessage);
-
-module.exports = router;
-=======
 router.post('/signup', LoginController.signup_post);
 
 router.post('/profile/update', LoginController.profile_update_post);
@@ -74,4 +61,3 @@ router.get('/home/getPosts', HomePageController.getUserPosts);
 router.get('/home/:offset', HomePageController.getNextPosts);
 
 module.exports = router;
->>>>>>> dev

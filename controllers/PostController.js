@@ -2,7 +2,7 @@ const postModel = require('../models/post');
 const commentModel = require('../models/comment');
 const sessionModel = require('../models/session')
 const time = require('../public/js/dateconvert');
-const sessionModel = require('../models/session');
+// const sessionModel = require('../models/session');
 
 /*
 How to make this error safe?
