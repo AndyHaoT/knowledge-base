@@ -1,7 +1,7 @@
 function sendMessage(){
     text_area = document.getElementsByTagName("textarea")[0]
     if(text_area.value.length > 0) { 
-        document.getElementById('msg_btn').disabled = false; 
+        document.getElementById('msg_btn').disabled = false;
     } else { 
         document.getElementById('msg_btn').disabled = true;
     }
@@ -53,7 +53,7 @@ function getMessagesFromThread(thisObj, thread_id, message_user) {
                 msgDiv.classList.add('content_photo')
                 // img tag
                 msgImg = document.createElement('img')
-                msgImg.src = "/test.jpg"
+                msgImg.src = m.user_avatar_path
                 msgImg.alt = "profile image"
                 msgDiv.appendChild(msgImg)
                 // div tag for msg
@@ -70,6 +70,7 @@ function getMessagesFromThread(thisObj, thread_id, message_user) {
                 msgInnerDiv.append(msgInnerSpan2)
                 // p tag for content
                 msgInnerP = document.createElement('p')
+                msgInnerP.setAttribute('style', 'white-space: pre;');
                 msgInnerP.textContent = m.message_content
                 msgInnerDiv.appendChild(msgInnerP)
 
@@ -78,7 +79,7 @@ function getMessagesFromThread(thisObj, thread_id, message_user) {
             })
             let element = document.querySelector(".message_list");
             element.scrollTop = element.scrollHeight;
-
+            sendMessage();
         }
     };
     xhttp.open("GET", "/conversation/"+thread_id, true);
@@ -94,8 +95,6 @@ function addMessage(thread_id, message_user) {
             let allDates = document.querySelectorAll('.message_list p span')
             let lastDate = allDates[allDates.length-1].textContent
             let msgP,msgSpan,msgDiv,msgImg,msgInnerDiv,msgInnerSpan,msgInnerSpan2,msgInnerP
-            console.log(oneMsg.date)
-            console.log(oneMsg.date)
             if (oneMsg.date != lastDate) {
                 lastDate = oneMsg.date
                 msgP = document.createElement('p')
@@ -109,7 +108,7 @@ function addMessage(thread_id, message_user) {
             msgDiv.classList.add('content_photo')
             // img tag
             msgImg = document.createElement('img')
-            msgImg.src = "/test.jpg"
+            msgImg.src = oneMsg.user_avatar_path
             msgImg.alt = "profile image"
             msgDiv.appendChild(msgImg)
             // div tag for msg
@@ -126,6 +125,7 @@ function addMessage(thread_id, message_user) {
             msgInnerDiv.append(msgInnerSpan2)
             // p tag for content
             msgInnerP = document.createElement('p')
+            msgInnerP.setAttribute('style', 'white-space: pre;');
             msgInnerP.textContent = oneMsg.message_content
             msgInnerDiv.appendChild(msgInnerP)
 
@@ -134,11 +134,13 @@ function addMessage(thread_id, message_user) {
             let element = document.querySelector(".message_list");
             element.scrollTop = element.scrollHeight;
             document.querySelector('textarea[name=message').value = "";
+            sendMessage();
         }
     };
     let message = document.querySelector('textarea[name=message').value
-    xhttp.open("POST", "/conversation/"+thread_id+"/post/"+message_user+"/message/"+message, true);
-    xhttp.send();
+    xhttp.open("POST", "/conversation/"+thread_id+"/post/"+message_user, true);
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp.send("message="+message);
 }
 
 let element = document.querySelector(".message_list");

@@ -1,0 +1,11 @@
+<div class="searchbytopic">
+    <h4>Search by topic</h4>
+    <form action="/searchByTopic" method="GET">
+    <select class="searchTopicInput" name="topic" required>
+        <% topics.forEach(function(topic) { %>
+            <option value="<%=topic.POST_TOPIC_CODE%>"><%=topic.POST_TOPIC_TEXT%></option>
+        <% }); %>
+    </select>
+    <button class="gobtn" type="submit">go</button>
+</form>
+</div>

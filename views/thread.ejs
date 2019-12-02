@@ -5,23 +5,23 @@
         <meta charset="utf-8">
 
         <title>Knowledge Base | Thread</title>
-        <meta name="description" content="Knowledge Base | Login">
+        <meta name="description" content="Knowledge Base | Thread">
         <meta name="author" content="Siya Peng">
 
-        <link rel="stylesheet" href="/css/message.css">
+        <link rel="stylesheet" href="/css/thread.css">
+        <link rel="stylesheet" href="/css/searchbar.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="/js/script.js" defer></script>
+        <script src="/js/threadJS.js" defer></script>
     </head>
     <body>
-        <div class = "search_part">
-            <input type="text" placeholder="&#xf002 Search">
-            <button>Logout</button>
-        </div>  
+        <%- include('partials/searchbar') %>
         <div class ="message_photo">
-            <img src="/test.jpg" alt="test">
-            <form class="message_part" method="POST" action="/thread/post/<%=receiver_id%>">
-                <input name ="subject" type="text" placeholder="subject">
-                <textarea name ="message" type="text" rows="3" cols="4" placeholder="message details...."></textarea>
-                <input type="submit" value="Message">
+            <img src="<%=user_avatar_path%>" alt="test">
+            <form class="message_part" method="POST" action="/thread/post/<%=receiver_id%>"">
+                <input name ="subject" type="text" placeholder="subject" onkeyup="validateThread()">
+                <textarea name ="message" type="text" rows="3" cols="4" placeholder="message details...."  onkeyup="validateThread()"></textarea>
+                <input id="submit_btn" type="submit" value="Message" disabled>
             </form>
         </div>
     </body>

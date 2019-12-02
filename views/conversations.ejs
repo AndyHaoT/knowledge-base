@@ -7,23 +7,21 @@
         <title>Knowledge Base | Login</title>
         <meta name="description" content="Knowledge Base | Conversations">
         <meta name="author" content="Siya Peng">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/css/conversations.css">
+        <link rel="stylesheet" href="/css/searchbar.css" type="text/css">
         <script src="/js/conversationsJS.js" defer></script>
         <script src="/js/script.js" defer></script>
     </head>
 
     <body>
-        <div class = "search_part">
-            <input type="text" placeholder="&#xf002 Search">
-            <button>Logout</button>
-        </div>  
+        <%- include('partials/searchbar') %>
         <div class = "wrapper">
             <div class="user_list">
                 <% for(var i=0; i<allthreads.length; i++) {%>
                 <div tabindex ="-1" class= "user" onclick="getMessagesFromThread(this,<%=allthreads[i].thread_id%>,<%=allthreads[i].user_id%>)">
                     <div class = "photo">
-                        <img src="/test.jpg" alt="profile image">
+                        <img src="<%=allthreads[i].user_avatar_path%>" alt="profile image">
                     </div>
                     <div class="user_info">
                         <p><%=allthreads[i].user_name%></p>

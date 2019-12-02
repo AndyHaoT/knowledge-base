@@ -1,26 +1,30 @@
 const db = require('../util/database');
 
-function createSessionTable() {
-    return db.execute("CREATE TABLE IF NOT EXISTS `knowledge_base`.`session` ("
-        + "`sess_id` VARCHAR(45) NOT NULL,"
-        + "`user_id` VARCHAR(45) NOT NULL,"
-        + "PRIMARY KEY (`sess_id`))");
+function twoDigits(d) {
+    if(0 <= d && d < 10) return "0" + d.toString();
+    if(-10 < d && d < 0) return "-0" + (-1*d).toString();
+    return d.toString();
 }
 
+Date.prototype.toMysqlFormat = function() {
+    return this.getUTCFullYear() + "-" + twoDigits(1 + this.getUTCMonth()) + "-" + twoDigits(this.getUTCDate()) + " " + twoDigits(this.getUTCHours()) + ":" + twoDigits(this.getUTCMinutes()) + ":" + twoDigits(this.getUTCSeconds());
+};
+
 function getUser(sessId) {
-    return db.execute("SELECT `user_id` FROM `session` WHERE `sess_id` = '" + sessId + "'");
+    return db.query("SELECT `data` FROM `session` WHERE `session_id` = ?", [sessId]);
 }
 
 function logUser(sessId, userId) {
-    return db.execute("INSERT INTO `session` VALUES('" + sessId + "', '" + userId + "') ON DUPLICATE KEY UPDATE `user_id`='" + userId + "'");
+    currentTime = new Date();
+    currentTime.setMilliseconds(currentTime.getMilliseconds() + 6000000);
+    return db.query("INSERT INTO `session` VALUES(?, ?, ?) ON DUPLICATE KEY UPDATE `data`=?", [sessId, currentTime, userId, userId]);
 }
 
 function logoutUser(sessId) {
-    return db.execute("DELETE FROM `session` WHERE `sess_id`='" + sessId + "'");
+    return db.query("DELETE FROM `session` WHERE `session_id`=?", [sessId]);
 }
 
 module.exports = {
-    createSessionTable: createSessionTable,
     getUser: getUser,
     logUser: logUser,
     logoutUser: logoutUser
