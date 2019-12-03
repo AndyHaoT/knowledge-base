@@ -1,0 +1,74 @@
+ 
+.sidebarProfile {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 150px;
+    width: 225px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    
+}
+
+.sidebarParagraphs{
+    display: inline-block;
+    margin: 0px;
+}
+
+.sidebarProfile img {
+    border-radius: 50%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.sidebarProfile p,a {
+    font-size: 1.17em;
+}
+
+
+.content_container {
+    height: 100%;
+    width: 60%;
+    float: right;
+    margin-right: 50px;
+}
+
+.next {
+    background: blue;
+    width: 50px;
+}
+
+.sideBarTable td, tr {
+    padding: 10px;
+    margin: 0px;
+    padding-left: 0px;
+}
+
+.searchbytopic {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    padding-right: 100px;
+    margin-bottom: 20px;
+}
+
+.searchbytopic h4, form {
+    display: inline;
+    margin-right: 25px;
+}
+
+.gobtn {
+    width: 6%;
+}
+
+.searchTopicInput {
+    width: 10%;
+    margin-right: 25px;
+}
+
+@media screen and (max-width: 600px){
+    .sidebarProfile {
+        position: unset;
+    }
+    .post_img {
+        display: none;
+    }
+}

@@ -18,9 +18,10 @@ app.use(session({
   saveUninitialized: true,
   cookie: { maxAge: 6000000 }
 }))
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes);
 
 app.listen(process.env.PORT, function() {
-    console.log('Server started on port 3000');
+    console.log('Server started on port ' + process.env.PORT);
 });

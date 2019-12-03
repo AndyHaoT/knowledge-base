@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/searchbar.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/home.css" type="text/css">
+    <link rel="stylesheet" href="/css/posts.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Home</title>
+</head>
+<body>
+    <%- include('partials/searchbar') %>
+    <div class="sidebarProfile">
+        <img src="<%= sidebar.USER_AVATAR_PATH %>" alt="" id="profileImage">
+        <h2><%= sidebar.USER_FIRSTNAME%>&nbsp;<%= sidebar.USER_LASTNAME%></h2>
+        <p><%= sidebar.USER_BIO %></p>
+        <table class="sideBarTable">
+            <tr>
+                <td><a href="/home/getPosts">Posts</a></td>
+                <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= sidebar.POSTS %></p></td>
+            </tr>
+            <tr>
+                <td> <a href="/conversation">Messages</a></td>
+                <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= sidebar.MESSAGES %></p></td>
+            </tr>
+            <tr>
+                <td><p>Likes</p></td>
+                <td><p>&nbsp; &nbsp; <%= sidebar.LIKES %></p></td>
+            </tr>
+        </table>
+        <br>
+        <a href="/editProfile">Edit Profile</a>
+    </div>
+    <div id = "center_box">
+        <div class="content_container">
+            <%- include('partials/home_content', {posts: posts, topics: topics}); %> 
+        </div>
+    </div>
+</body>
+</html>
