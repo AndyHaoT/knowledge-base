@@ -92,6 +92,8 @@ form .submit:hover {
 
 .middle {
     height: 50%;
+    width: 98%;
+    overflow: hidden;
 }
 
 .bottom {
