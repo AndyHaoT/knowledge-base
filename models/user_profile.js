@@ -8,7 +8,7 @@ function getUserProfile(user_id, session_user_id) {
     {
         return db.query(
             "SELECT UB.USER_ID, UB.USER_FIRSTNAME, UB.USER_LASTNAME, UB.USER_AVATAR_PATH,"
-            + " UB.USER_BIO, UB.USER_COUNTRY_CODE,"
+            + " UB.USER_BIO, UB.USER_COUNTRY,"
             + " (SELECT COUNT(USER_LIKED_ID)"
             + " FROM KNOWLEDGE_BASE.USER_LIKE"
             + " WHERE USER_LIKED_ID = UB.USER_ID) AS LIKE_COUNT,"
