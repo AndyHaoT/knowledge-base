@@ -2,7 +2,10 @@ const postModel = require('../models/post');
 const commentModel = require('../models/comment');
 const sessionModel = require('../models/session')
 const time = require('../public/js/dateconvert');
+<<<<<<< HEAD
 // const sessionModel = require('../models/session');
+=======
+>>>>>>> dev
 
 /*
 How to make this error safe?
