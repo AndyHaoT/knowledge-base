@@ -47,7 +47,7 @@ params
 */
 function addPost(post) {
     return db.query("INSERT INTO KNOWLEDGE_BASE.POST (USER_ID, POST_SUBJECT, POST_CONTENT, POST_TOPIC_CODE) "
-        + "VALUES ( " + post.user_id + ",'" + post.subject + "','" + post.content + "'," + post.topic + ");");
+        + "VALUES ( ?, ?, ?, ? );", [post.user_id, post.subject, post.content, post.topic]);
 }
 
 function getTopics() {
