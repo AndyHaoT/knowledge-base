@@ -6,8 +6,8 @@ Gets all comments for the post_id
 */
 function getComments(post_id) {
     let query = "SELECT PC.POST_COMMENT_ID, PC.POST_COMMENT_CONTENT, PC.DATE_CREATED, UB.USER_ID, UB.USER_AVATAR_PATH"
-    + " FROM KNOWLEDGE_BASE.POST_COMMENT PC"
-    + " JOIN KNOWLEDGE_BASE.USER_BIOGRAPHY UB ON UB.USER_ID = PC.USER_ID"
+    + " FROM POST_COMMENT PC"
+    + " JOIN USER_BIOGRAPHY UB ON UB.USER_ID = PC.USER_ID"
     + " WHERE PC.POST_ID = " + post_id
     + " ORDER BY PC.DATE_CREATED";
 
@@ -24,7 +24,7 @@ params
         - time: the time that the post was created
 */
 function addComment(comment) {
-    let query = "INSERT INTO KNOWLEDGE_BASE.POST_COMMENT (`post_id`, `user_id`," 
+    let query = "INSERT INTO POST_COMMENT (`post_id`, `user_id`," 
             + " `post_comment_content`)"
             + " VALUES ( ?, ?, ? );";
         

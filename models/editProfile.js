@@ -13,10 +13,10 @@ function updateProfile(id, data) {
 
 function getUserSessionData(user_id) {
     let q = "SELECT USER_ID, USER_FIRSTNAME, USER_LASTNAME, USER_BIO, USER_AVATAR_PATH,"    
-	+ " (SELECT COUNT(USER_ID) FROM KNOWLEDGE_BASE.USER_LIKE WHERE USER_LIKED_ID = " + user_id + ") AS LIKES,"
-	+ " (SELECT COUNT(POST_ID) FROM KNOWLEDGE_BASE.POST WHERE USER_ID = " + user_id + ") AS POSTS,"
-	+ " (SELECT COUNT(THREAD_ID) FROM KNOWLEDGE_BASE.USER_MESSAGE WHERE USER_SENDER_ID = " + user_id + " || USER_RECEIVER_ID = " + user_id + ") AS MESSAGES"
-    + " FROM KNOWLEDGE_BASE.USER_BIOGRAPHY WHERE USER_ID = " + user_id + ";";
+	+ " (SELECT COUNT(USER_ID) FROM USER_LIKE WHERE USER_LIKED_ID = " + user_id + ") AS LIKES,"
+	+ " (SELECT COUNT(POST_ID) FROM POST WHERE USER_ID = " + user_id + ") AS POSTS,"
+	+ " (SELECT COUNT(THREAD_ID) FROM USER_MESSAGE WHERE USER_SENDER_ID = " + user_id + " || USER_RECEIVER_ID = " + user_id + ") AS MESSAGES"
+    + " FROM USER_BIOGRAPHY WHERE USER_ID = " + user_id + ";";
 
     return db.query(q);
 }

@@ -10,13 +10,13 @@ function getUserProfile(user_id, session_user_id) {
             "SELECT UB.USER_ID, UB.USER_FIRSTNAME, UB.USER_LASTNAME, UB.USER_AVATAR_PATH,"
             + " UB.USER_BIO, UB.USER_COUNTRY,"
             + " (SELECT COUNT(USER_LIKED_ID)"
-            + " FROM KNOWLEDGE_BASE.USER_LIKE"
+            + " FROM USER_LIKE"
             + " WHERE USER_LIKED_ID = UB.USER_ID) AS LIKE_COUNT,"
             + " COUNT(P.POST_ID) AS POST_COUNT,"
             + " L.USER_ID AS HAS_LIKE"
-            + " FROM knowledge_base.USER_BIOGRAPHY UB "
-            + " LEFT JOIN knowledge_base.POST P on P.USER_ID = UB.USER_ID"
-            + " LEFT JOIN knowledge_base.USER_LIKE L on UB.USER_ID = L.USER_LIKED_ID AND L.USER_ID = " + session_user_id //FOR IS LIKED
+            + " FROM USER_BIOGRAPHY UB "
+            + " LEFT JOIN POST P on P.USER_ID = UB.USER_ID"
+            + " LEFT JOIN USER_LIKE L on UB.USER_ID = L.USER_LIKED_ID AND L.USER_ID = " + session_user_id //FOR IS LIKED
             + " WHERE UB.USER_ID = " + user_id
             + " GROUP BY UB.USER_ID "
         );
@@ -30,7 +30,7 @@ function getUserProfile(user_id, session_user_id) {
 
 function likeUser(obj) {
     return db.query(
-        "INSERT INTO KNOWLEDGE_BASE.USER_LIKE (USER_ID, USER_LIKED_ID) VALUES ( " 
+        "INSERT INTO USER_LIKE (USER_ID, USER_LIKED_ID) VALUES ( " 
         + obj.user_id + ", " + obj.user_liked_id + ")"
     );
 }
