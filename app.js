@@ -18,6 +18,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: { maxAge: 6000000 }
 }))
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes);
 

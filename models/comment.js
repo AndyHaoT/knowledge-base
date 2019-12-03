@@ -26,9 +26,9 @@ params
 function addComment(comment) {
     let query = "INSERT INTO KNOWLEDGE_BASE.POST_COMMENT (`post_id`, `user_id`," 
             + " `post_comment_content`)"
-            + " VALUES ( " + comment.post_id + "," + comment.user_id + ",'" + comment.post_comment_content + "');";
+            + " VALUES ( ?, ?, ? );";
         
-    return db.query(query);
+    return db.query(query, [comment.post_id, comment.user_id, comment.post_comment_content]);
 }
 
 module.exports = {

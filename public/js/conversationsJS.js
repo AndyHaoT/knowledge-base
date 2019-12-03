@@ -139,8 +139,8 @@ function addMessage(thread_id, message_user) {
     };
     let message = document.querySelector('textarea[name=message').value
     xhttp.open("POST", "/conversation/"+thread_id+"/post/"+message_user, true);
-    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhttp.send("message="+message);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify({message: message}));
 }
 
 let element = document.querySelector(".message_list");
