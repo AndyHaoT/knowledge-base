@@ -21,6 +21,11 @@
 
 .post_img {
     margin: 10px;
-    max-width: 150px;
+    max-width: 115px;
     height: auto;
+}
+
+.row {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
