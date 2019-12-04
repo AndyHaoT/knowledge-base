@@ -3,7 +3,7 @@
     <form action="/searchByTopic" method="GET">
     <select class="searchTopicInput" name="topic" required>
         <% topics.forEach(function(topic) { %>
-            <option value="<%=topic.POST_TOPIC_CODE%>"><%=topic.POST_TOPIC_TEXT%></option>
+            <option value="<%=topic.post_topic_code%>"><%=topic.post_topic_text%></option>
         <% }); %>
     </select>
     <button class="gobtn" type="submit">go</button>
