@@ -35,7 +35,7 @@
                     <%- include('partials/countryList') %>
                     <br>
                     <input type="text" name="dob" placeholder="date of birth (mm/dd/yyyy)" maxlength="20" required
-                        pattern="^[0-9/ ]*$" title="Only numbers and '/' are allowed" onmouseenter="(this.type='date')"
+                        pattern="^[0-9/- ]*$" title="Only numbers '/' and '-' are allowed" onmouseenter="(this.type='date')"
                         onfocus="HideError()" onmouseout="(this.type='text')">
                     <br>
                     <input id="signup-more-info-btn" type="submit" value="complete registration">
