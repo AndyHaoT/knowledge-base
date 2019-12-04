@@ -6,5 +6,12 @@
     <%- include('searchbytopic', {topics: topics}); %>
     <h4>Latest Discussions</h4>
     <%- include('posts_container', {posts: posts}); %>
-    <a href="/home/<%= offset %>">Next</a>
+    <%if (offset > 10) { %>
+        <a href="/home/<%= offset - 10 %>">Prev</a>
+    <% } else if (offset == 10) { %>
+        <a href="/home%>">Prev</a>
+    <% } %>
+    <%if (posts.length >= 5) { %>
+        <a href="/home/<%= offset %>">Next</a>
+    <% } %>
 <% } %>
