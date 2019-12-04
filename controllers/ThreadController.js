@@ -1,6 +1,16 @@
 const msgModel = require('../models/mod_message.js');
 const sessionModel = require('../models/session');
+var nodemailer = require('nodemailer');
 
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'testcomp4711@gmail.com',
+      pass: 'test4711'
+    }
+  });
+  
+  
 exports.newThread = (req, res) => {
     sessionModel.getUser(req.sessionID)
         .then(([user_rows, metadata]) => {
@@ -34,6 +44,21 @@ exports.createThread = (req, res) => {
                     receiver_id: req.params.receiver_id,
                     sender_id: self_id
                 }
+                var mailOptions = {
+                    from: 'testcomp4711@gmail.com',
+                    to: 'harman_minhas@outlook.com',
+                    subject: req.body.subject,
+                    text: req.body.message
+                  };
+                  
+                  transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                      console.log(error);
+                    } else {
+                      console.log('Email sent: ' + info.response);
+                    }
+                  });
+                
                 msgModel.createMessage(data).then(([data, metadata]) => {
                     res.redirect(301, '/conversation/')
                 });
