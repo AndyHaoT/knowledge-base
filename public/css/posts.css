@@ -11,7 +11,7 @@ body {
 
 .post_img {
     border-radius: 50%;
-    max-width: 150px;
+    width: 70%;
     height: auto;
 }
 
@@ -64,6 +64,7 @@ form .submit:hover {
     text-align: center;
     height: 100%;
     width: 20%;
+    background: lightgoldenrodyellow;
 }
 
 .content {
