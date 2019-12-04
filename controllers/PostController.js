@@ -15,9 +15,10 @@ exports.getFullPost = function (req, res) {
                 postModel.getPost(post_id)
                     .then(([data, metadata]) => {
                         post = data;
+                        console.log(post)
 
-                        post[0].DATE_CREATED = time.convertTimestamp(post[0].DATE_CREATED);
-
+                        post[0].date_created = time.convertTimestamp(post[0].date_created);
+                        //console.log(post)
                         commentModel.getComments(post_id)
                             .then(([data, metadata]) => {
                                 res.render('full_post', { post: post, comments: data });

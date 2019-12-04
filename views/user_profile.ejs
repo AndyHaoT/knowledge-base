@@ -22,35 +22,35 @@
     <%- include('partials/searchbar') %>
     <div id='profile' class="row">
         <div class="col-lg-8 picture_box">
-            <img id="profile_img" src="<%= profile.USER_AVATAR_PATH %>" alt="Profile Picture"/> 
+            <img id="profile_img" src="<%= profile.user_avatar_path %>" alt="Profile Picture"/> 
         </div>
         <div class="col-lg-4 message_box">
             <!-- <button class="btn-primary">Messages</button> -->
-            <a href="/thread/<%= profile.USER_ID %>" method="GET"><div id="msg_btn">Message</div></a>
+            <a href="/thread/<%= profile.user_id %>" method="GET"><div id="msg_btn">Message</div></a>
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-8">
-            <h4><%=profile.USER_FIRSTNAME%> <%=profile.USER_LASTNAME%></h4>
-            <h5><%=profile.USER_BIO%></h5>
-            <h6><%=profile.USER_COUNTRY_CODE%></h6>
+            <h4><%=profile.user_firstname%> <%=profile.user_lastname%></h4>
+            <h5><%=profile.user_bio%></h5>
+            <h6><%=profile.user_country%></h6>
         </div>
         <div class="col-lg-4">
-            <%if (profile.HAS_LIKE == null) { %>
-            <a href="/profile/<%=profile.USER_ID%>/like" method="GET">
+            <%if (profile.has_like == null) { %>
+            <a href="/profile/<%=profile.user_id%>/like" method="GET">
             <% } %>
-                <h6><%=profile.LIKE_COUNT%> Likes</h6>
-            <%if (profile.HAS_LIKE == null) { %>
+                <h6><%=profile.like_count%> Likes</h6>
+            <%if (profile.has_like == null) { %>
             </a>
             <% } %>
-            <h6><%=profile.POST_COUNT%> Posts</h6>
+            <h6><%=profile.post_count%> Posts</h6>
         </div>
     </div>
 
 
     <div class="col-lg-12 posts_header">
-        <h3>All posts by <%=profile.USER_FIRSTNAME%></h3>
+        <h3>All posts by <%=profile.user_firstname%></h3>
     </div>
 
     <div class="col-lg-8">

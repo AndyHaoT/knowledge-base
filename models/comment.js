@@ -5,11 +5,11 @@ const db = require('../util/database');
 Gets all comments for the post_id
 */
 function getComments(post_id) {
-    let query = "SELECT PC.POST_COMMENT_ID, PC.POST_COMMENT_CONTENT, PC.DATE_CREATED, UB.USER_ID, UB.USER_AVATAR_PATH"
-    + " FROM POST_COMMENT PC"
-    + " JOIN USER_BIOGRAPHY UB ON UB.USER_ID = PC.USER_ID"
-    + " WHERE PC.POST_ID = " + post_id
-    + " ORDER BY PC.DATE_CREATED";
+    let query = "select pc.post_comment_id, pc.post_comment_content, pc.date_created, ub.user_id, ub.user_avatar_path"
+    + " from post_comment pc"
+    + " join user_biography ub on ub.user_id = pc.user_id"
+    + " where pc.post_id = " + post_id
+    + " order by pc.date_created";
 
     return db.query(query);
 }
@@ -24,9 +24,9 @@ params
         - time: the time that the post was created
 */
 function addComment(comment) {
-    let query = "INSERT INTO POST_COMMENT (`post_id`, `user_id`," 
+    let query = "insert into post_comment (`post_id`, `user_id`," 
             + " `post_comment_content`)"
-            + " VALUES ( ?, ?, ? );";
+            + " values ( ?, ?, ? );";
         
     return db.query(query, [comment.post_id, comment.user_id, comment.post_comment_content]);
 }

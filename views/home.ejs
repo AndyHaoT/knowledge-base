@@ -15,21 +15,21 @@
 <body>
     <%- include('partials/searchbar') %>
     <div class="sidebarProfile">
-        <img src="<%= sidebar.USER_AVATAR_PATH %>" alt="" id="profileImage">
-        <h2><%= sidebar.USER_FIRSTNAME%>&nbsp;<%= sidebar.USER_LASTNAME%></h2>
-        <p><%= sidebar.USER_BIO %></p>
+        <img src="<%= sidebar.user_avatar_path %>" alt="" id="profileImage">
+        <h2><%= sidebar.user_firstname%>&nbsp;<%= sidebar.user_lastname%></h2>
+        <p><%= sidebar.user_bio %></p>
         <table class="sideBarTable">
             <tr>
                 <td><a href="/home/getPosts">Posts</a></td>
-                <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= sidebar.POSTS %></p></td>
+                <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= sidebar.posts %></p></td>
             </tr>
             <tr>
                 <td> <a href="/conversation">Messages</a></td>
-                <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= sidebar.MESSAGES %></p></td>
+                <td><p class="sidebarParagraphs"> &nbsp; &nbsp; <%= sidebar.messages %></p></td>
             </tr>
             <tr>
                 <td><p>Likes</p></td>
-                <td><p>&nbsp; &nbsp; <%= sidebar.LIKES %></p></td>
+                <td><p>&nbsp; &nbsp; <%= sidebar.likes %></p></td>
             </tr>
         </table>
         <br>

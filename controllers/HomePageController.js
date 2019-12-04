@@ -37,7 +37,7 @@ exports.getHomePage = function (req, res) {
                         postModel.getPosts(postNum, 0, -1)
                             .then(([posts, metadata]) => {
                                 for (let i = 0; i < posts.length; i++)
-                                    posts[i].DATE_CREATED = time.convertTimestamp(posts[i].DATE_CREATED);
+                                    posts[i].date_created = time.convertTimestamp(posts[i].date_created);
 
                                 postModel.getTopics()
                                     .then(([topics, metadata]) => {
@@ -65,7 +65,7 @@ exports.getNextPosts = function (req, res) {
                             postModel.getPosts(postNum, offset, -1)
                                 .then(([posts, metadata]) => {
                                     for (let i = 0; i < posts.length; i++)
-                                        posts[i].DATE_CREATED = time.convertTimestamp(posts[i].DATE_CREATED);
+                                        posts[i].date_created = time.convertTimestamp(posts[i].date_created);
 
                                     postModel.getTopics()
                                         .then(([topics, metadata]) => {
@@ -92,7 +92,7 @@ exports.getUserPosts = function (req, res) {
                         postModel.getPosts(-1, 0, user_id)
                             .then(([posts, metadata]) => {
                                 for (let i = 0; i < posts.length; i++)
-                                    posts[i].DATE_CREATED = time.convertTimestamp(posts[i].DATE_CREATED);
+                                    posts[i].date_created = time.convertTimestamp(posts[i].date_created);
 
                                 res.render('home', { sidebar: data[0], posts: posts, topics: 0, getPosts: true });
                             });

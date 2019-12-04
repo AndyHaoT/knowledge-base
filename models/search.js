@@ -2,27 +2,27 @@ const db = require('../util/database');
 
 
 function getSearchResults(keyWord) {
-    let query = "SELECT P.POST_ID, P.POST_SUBJECT, P.POST_CONTENT, P.DATE_CREATED, U.USER_AVATAR_PATH, PT.POST_TOPIC_TEXT, COUNT(PC.POST_COMMENT_ID) AS REPLY_COUNT" +
-        " FROM POST P" +
-        " JOIN USER_BIOGRAPHY U ON U.USER_ID = P.USER_ID" +
-        " JOIN POST_TOPIC PT ON PT.POST_TOPIC_CODE = P.POST_TOPIC_CODE" +
-        " LEFT JOIN POST_COMMENT PC ON PC.POST_ID = P.POST_ID" +
-        " WHERE P.POST_SUBJECT LIKE ?"  +
-        " GROUP BY P.POST_ID" +
-        " ORDER BY DATE_CREATED DESC";
+    let query = "select p.post_id, p.post_subject, p.post_content, p.date_created, u.user_id, u.user_avatar_path, pt.post_topic_text, count(pc.post_comment_id) as reply_count" +
+        " from post p" +
+        " join user_biography u on u.user_id = p.user_id" +
+        " join post_topic pt on pt.post_topic_code = p.post_topic_code" +
+        " left join post_comment pc on pc.post_id = p.post_id" +
+        " where p.post_subject like ?"  +
+        " group by p.post_id" +
+        " order by date_created desc";
 
     return db.query(query, ["%" + keyWord + "%"]);
 }
 
 function getSearchResultsbyTopic(keyWord) {
-    let query = "SELECT P.POST_ID, P.POST_SUBJECT, P.POST_CONTENT, P.DATE_CREATED, U.USER_AVATAR_PATH, PT.POST_TOPIC_TEXT, COUNT(PC.POST_COMMENT_ID) AS REPLY_COUNT" +
-        " FROM POST P" +
-        " JOIN USER_BIOGRAPHY U ON U.USER_ID = P.USER_ID" +
-        " JOIN POST_TOPIC PT ON PT.POST_TOPIC_CODE = P.POST_TOPIC_CODE" +
-        " LEFT JOIN POST_COMMENT PC ON PC.POST_ID = P.POST_ID" +
-        " WHERE P.POST_TOPIC_CODE = ?"  +
-        " GROUP BY P.POST_ID" +
-        " ORDER BY DATE_CREATED DESC";
+    let query = "select p.post_id, p.post_subject, p.post_content, p.date_created, u.user_id, u.user_avatar_path, pt.post_topic_text, count(pc.post_comment_id) as reply_count" +
+        " from post p" +
+        " join user_biography u on u.user_id = p.user_id" +
+        " join post_topic pt on pt.post_topic_code = p.post_topic_code" +
+        " left join post_comment pc on pc.post_id = p.post_id" +
+        " where p.post_topic_code = ?"  +
+        " group by p.post_id" +
+        " order by date_created desc";
 
     return db.query(query, [keyWord]);
 }

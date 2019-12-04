@@ -14,7 +14,7 @@ exports.getSearchResults = function (req, res) {
                     .then(([posts, metadata]) => {
 
                         for (let i = 0; i < posts.length; i++)
-                            posts[i].DATE_CREATED = time.convertTimestamp(posts[i].DATE_CREATED);
+                            posts[i].date_created = time.convertTimestamp(posts[i].date_created);
 
                         res.render('searchResults', { posts: posts });
                     })

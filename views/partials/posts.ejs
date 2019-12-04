@@ -2,23 +2,23 @@
 <% posts.forEach(function(post) { %>
 <div class="post2">
     <div class="img">
-        <a href="/profile/<%=post.USER_ID%>" method="GET">
-            <img class="post_img" src="<%= post.USER_AVATAR_PATH %>" alt="Profile Picture"/>
+        <a href="/profile/<%=post.user_id%>" method="GET">
+            <img class="post_img" src="<%= post.user_avatar_path %>" alt="Profile Picture"/>
         </a> 
     </div>
     <div class="content">
         <div class="top">
-            <a href="/post/<%=post.POST_ID%>" method="GET"><div class="left"><h4><%=post.POST_SUBJECT%></h4></div></a>
-            <div class="right topic"><h4><%=post.POST_TOPIC_TEXT%></h4></div>
+            <a href="/post/<%=post.post_id%>" method="GET"><div class="left"><h4><%=post.post_subject%></h4></div></a>
+            <div class="right topic"><h4><%=post.post_topic_text%></h4></div>
         </div>
         <div class="middle">
-            <p><%=post.POST_CONTENT%></p>
+            <p><%=post.post_content%></p>
         </div>
         <div class="rows">
-            <div><p class="foot"><%=post.DATE_CREATED%></p></div>
-            <%if (post.REPLY_COUNT >= 0) { %>
-            <div class="rep"><a href="/post/<%=post.POST_ID%>" method="GET">
-                <p><%=post.REPLY_COUNT%> replies</p>
+            <div><p class="foot"><%=post.date_created%></p></div>
+            <%if (post.reply_count >= 0) { %>
+            <div class="rep"><a href="/post/<%=post.post_id%>" method="GET">
+                <p><%=post.reply_count%> replies</p>
             </a></div>
             <% } %>
         </div>

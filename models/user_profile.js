@@ -7,18 +7,18 @@ function getUserProfile(user_id, session_user_id) {
     if (user_id)
     {
         return db.query(
-            "SELECT UB.USER_ID, UB.USER_FIRSTNAME, UB.USER_LASTNAME, UB.USER_AVATAR_PATH,"
-            + " UB.USER_BIO, UB.USER_COUNTRY,"
-            + " (SELECT COUNT(USER_LIKED_ID)"
-            + " FROM USER_LIKE"
-            + " WHERE USER_LIKED_ID = UB.USER_ID) AS LIKE_COUNT,"
-            + " COUNT(P.POST_ID) AS POST_COUNT,"
-            + " L.USER_ID AS HAS_LIKE"
-            + " FROM USER_BIOGRAPHY UB "
-            + " LEFT JOIN POST P on P.USER_ID = UB.USER_ID"
-            + " LEFT JOIN USER_LIKE L on UB.USER_ID = L.USER_LIKED_ID AND L.USER_ID = " + session_user_id //FOR IS LIKED
-            + " WHERE UB.USER_ID = " + user_id
-            + " GROUP BY UB.USER_ID "
+            "select ub.user_id, ub.user_firstname, ub.user_lastname, ub.user_avatar_path,"
+            + " ub.user_bio, ub.user_country,"
+            + " (select count(user_liked_id)"
+            + " from user_like"
+            + " where user_liked_id = ub.user_id) as like_count,"
+            + " count(p.post_id) as post_count,"
+            + " l.user_id as has_like"
+            + " from user_biography ub "
+            + " left join post p on p.user_id = ub.user_id"
+            + " left join user_like l on ub.user_id = l.user_liked_id and l.user_id = " + session_user_id //for is liked
+            + " where ub.user_id = " + user_id
+            + " group by ub.user_id "
         );
     }
     else 
@@ -30,7 +30,7 @@ function getUserProfile(user_id, session_user_id) {
 
 function likeUser(obj) {
     return db.query(
-        "INSERT INTO USER_LIKE (USER_ID, USER_LIKED_ID) VALUES ( " 
+        "insert into user_like (user_id, user_liked_id) values ( " 
         + obj.user_id + ", " + obj.user_liked_id + ")"
     );
 }
