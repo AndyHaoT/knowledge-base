@@ -13,6 +13,8 @@ body {
     border-radius: 50%;
     max-width: 150px;
     height: auto;
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 
 .topic {
