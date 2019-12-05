@@ -37,7 +37,7 @@
                 <div class="message_list">
                 </div>
                 <textarea rows="4" cols="170" name="message" placeholder="Write a message..." onkeyup="sendMessage()"></textarea>
-                <input id = "msg_btn" type="submit" value="Send" onclick="addMessage(<=%thread_id>, <=%message_user>)" disabled>
+                <input id = "msg_btn" type="submit" value="Send" onclick="addMessage(<%=thread_id%>, <%=message_user%>)" disabled>
             </div>
         </div>
     </body>

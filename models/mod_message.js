@@ -6,6 +6,11 @@ function getPhoto(user_id) {
     return db.query(sql);
 }
 
+function getUserEmail(user_id) {
+    let sql = "select user_email from user where user_id = ?"
+    return db.query(sql, user_id)
+}
+
 function createMessage(data) {
     let sql1 = "Insert into user_message_thread (thread_subject) values (?);";
     return db.query(sql1, data.subject).then(([rows, meta]) => {
@@ -53,5 +58,6 @@ module.exports = {
     createMessage,
     getThreads,
     writeMessage,
-    getMessages
+    getMessages,
+    getUserEmail
 }

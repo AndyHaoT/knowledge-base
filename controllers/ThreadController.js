@@ -44,20 +44,23 @@ exports.createThread = (req, res) => {
                     receiver_id: req.params.receiver_id,
                     sender_id: self_id
                 }
-                var mailOptions = {
-                    from: 'testcomp4711@gmail.com',
-                    to: 'harman_minhas@outlook.com',
-                    subject: req.body.subject,
-                    text: req.body.message
-                  };
-                  
-                  transporter.sendMail(mailOptions, function(error, info){
-                    if (error) {
-                      console.log(error);
-                    } else {
-                      console.log('Email sent: ' + info.response);
-                    }
-                  });
+                msgModel.getUserEmail(req.params.receiver_id)
+                .then(([emailRows, emailmetadata]) => {
+                    var mailOptions = {
+                        from: 'testcomp4711@gmail.com',
+                        to: emailRows[0].user_email,
+                        subject: req.body.subject,
+                        text: req.body.message
+                    };
+                    
+                    transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                        console.log(error);
+                        } else {
+                        console.log('Email sent: ' + info.response);
+                        }
+                    });
+                })
                 
                 msgModel.createMessage(data).then(([data, metadata]) => {
                     res.redirect(301, '/conversation/')
